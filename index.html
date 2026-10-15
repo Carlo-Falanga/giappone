@@ -7,100 +7,141 @@
 <link rel="icon" href="data:,">
 <meta name="robots" content="noindex, nofollow">
 <style>
-:root{--ink:#16150F;--ink-70:#4E4A40;--ink-45:#86806F;--velo:#F2F0EA;--riga:#DAD5C7;--tokyo:#4B7F1F;--kyoto:#86285C;--koya:#A63A22;--osaka:#10547F;--linea:var(--ink);--mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace}
+@font-face{font-family:"Zen Kaku";src:url(fonts/zen-500.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Zen Kaku";src:url(fonts/zen-700.woff2) format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Zen Kaku";src:url(fonts/zen-900.woff2) format("woff2");font-weight:900;font-display:swap}
+@font-face{font-family:"Plex Mono";src:url(fonts/plex-500.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Plex Mono";src:url(fonts/plex-600.woff2) format("woff2");font-weight:600;font-display:swap}
+:root{--ink:#16150F;--testo2:#5C574A;--carta:#FFFFFF;--superficie:#F3F1EC;--riga:#E4E0D6;--tokyo:#4B7F1F;--kyoto:#86285C;--koya:#A63A22;--osaka:#10547F;--viaggio:#6B665A;--linea:var(--ink);--sans:"Zen Kaku","Segoe UI",system-ui,sans-serif;--mono:"Plex Mono",ui-monospace,Menlo,Consolas,monospace}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:#fff;color:var(--ink);font:16px/1.5 -apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-variant-numeric:tabular-nums}
-.wrap{max-width:960px;margin:0 auto;padding:0 16px 48px}
-header{padding:32px 0 16px}
-h1{font-size:40px;line-height:.95;letter-spacing:-.03em;margin:0;font-weight:800}
-h1 small{display:block;font-size:16px;font-weight:500;letter-spacing:0;color:var(--ink-70);margin-top:12px;line-height:1.4}
-.linea{display:grid;grid-template-columns:repeat(2,1fr);gap:16px 12px;margin-top:24px}
-.fermata{border-top:6px solid var(--linea);padding-top:8px}
-.fermata:nth-child(1){--linea:var(--tokyo)}.fermata:nth-child(2){--linea:var(--kyoto)}.fermata:nth-child(3){--linea:var(--koya)}.fermata:nth-child(4){--linea:var(--osaka)}
-.fermata b{display:block;font-size:14px;font-weight:700;line-height:1.2}
-.fermata span{display:block;font:13px/1.4 var(--mono);color:var(--ink-70)}
-.tabs{position:sticky;top:0;z-index:2;background:#fff;display:flex;flex-wrap:wrap;border-bottom:2px solid var(--ink);margin:16px 0 0}
-.tabs a{display:flex;align-items:center;min-height:44px;padding:0 12px;font-weight:600;font-size:15px;color:var(--ink-70);text-decoration:none;border-bottom:3px solid transparent;margin-bottom:-2px}
+body{margin:0;background:var(--carta);color:var(--ink);font:500 16px/1.55 var(--sans);font-variant-numeric:tabular-nums}
+.wrap{max-width:960px;margin:0 auto;padding:0 16px 64px}
+header{padding:40px 0 8px}
+h1{font-size:56px;line-height:.92;letter-spacing:-.04em;margin:0;font-weight:900}
+.sotto{font:500 17px/1.4 var(--sans);color:var(--testo2);margin:16px 0 0}
+.mappa{display:grid;grid-template-columns:repeat(4,1fr);position:relative;margin:32px 0 8px}
+.mappa::before{content:"";position:absolute;left:12.5%;right:12.5%;top:20px;height:4px;background:var(--riga)}
+.fermata{position:relative;text-align:center;padding:0 4px}
+.anello{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--carta);border:4px solid var(--linea);color:var(--linea);font:900 18px/1 var(--sans);position:relative}
+.fermata b{display:block;font-size:15px;font-weight:700;margin-top:10px;line-height:1.2}
+.fermata span{display:block;font:500 14px/1.4 var(--mono);color:var(--testo2)}
+.f-tokyo{--linea:var(--tokyo)}.f-kyoto{--linea:var(--kyoto)}.f-koya{--linea:var(--koya)}.f-osaka{--linea:var(--osaka)}.f-viaggio{--linea:var(--viaggio)}
+.tabs{position:sticky;top:0;z-index:2;background:var(--carta);display:flex;flex-wrap:wrap;border-bottom:2px solid var(--riga);margin:24px 0 0}
+.tabs a{display:flex;align-items:center;min-height:48px;padding:0 14px;font-weight:700;font-size:16px;color:var(--testo2);text-decoration:none;border-bottom:3px solid transparent;margin-bottom:-2px}
 .tabs a:first-child{padding-left:0}
 .tabs a.on{color:var(--ink);border-bottom-color:var(--ink)}
+.tabs a:focus-visible{outline:3px solid var(--ink);outline-offset:-3px}
 .js main>section{display:none}.js main>section.on{display:block}
-main>section{padding-top:8px;scroll-margin-top:96px}
-h2{font-size:20px;margin:24px 0 12px;letter-spacing:-.01em;display:flex;justify-content:space-between;align-items:baseline;gap:12px}
-h2 .coda{font:13px/1.4 var(--mono);color:var(--ink-70);font-weight:400;text-align:right}
-p{margin:8px 0}
-.nota{color:var(--ink-70);font-size:15px}
-.riga{display:grid;grid-template-columns:96px 1fr;gap:12px;padding:10px 0;border-bottom:1px solid var(--riga)}
-.riga:last-child{border-bottom:0}
-.riga .q{font-weight:700}.riga .q span{display:block;font:13px/1.4 var(--mono);font-weight:400;color:var(--ink-70)}
-.orari{font:500 16px/1.4 var(--mono)}.orari span{white-space:nowrap}.orari i{font-style:normal;color:var(--ink-70);padding:0 4px}.orari sup{font-size:13px;color:var(--ink-70)}
-.riga .c{color:var(--ink-70);font-size:15px}.riga .c b{color:var(--ink)}
+main>section{padding-top:16px;scroll-margin-top:110px}
+h2{font-size:28px;line-height:1.1;letter-spacing:-.02em;margin:40px 0 16px;font-weight:900}
+h2 small{display:block;font:500 15px/1.5 var(--sans);color:var(--testo2);letter-spacing:0;margin-top:4px}
+section>h2:first-child{margin-top:16px}
+.card{background:var(--superficie);border-radius:16px;padding:20px;margin-bottom:20px;overflow:hidden}
+.card.foto{padding:0}
+.card.foto .corpo{padding:20px}
+.card img{display:block;width:100%;object-fit:cover}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+.tile{background:var(--superficie);border-radius:16px;padding:18px 16px 16px}
+.tile b{display:block;font:600 26px/1.1 var(--mono);letter-spacing:-.03em}
+.tile span{display:block;font-size:14px;line-height:1.4;color:var(--testo2);margin-top:6px}
+.tile.somma{background:var(--ink);color:var(--carta)}
+.tile.somma span{color:#D9D4C7}
+.volo{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center}
+.volo .ap{font:900 30px/1 var(--sans);letter-spacing:-.03em}
+.volo .ora{font:600 20px/1.3 var(--mono)}
+.volo .dove{font-size:14px;color:var(--testo2)}
+.volo .freccia{font:500 15px/1.3 var(--mono);color:var(--testo2);text-align:center}
+.volo .freccia::before{content:"";display:block;height:3px;background:var(--riga);margin-bottom:6px}
+.volo .a{text-align:right}
+.dett{margin:14px 0 0;padding:14px 0 0;border-top:1px solid var(--riga);font-size:15px;color:var(--testo2)}
+.dett b{color:var(--ink);font-weight:700}
+.notti{display:grid;gap:14px}
+.notte{display:grid;grid-template-columns:44px 1fr auto;gap:14px;align-items:center}
+.notte .nome{font-weight:700;line-height:1.3}
+.notte .nome span{display:block;font-weight:500;font-size:14px;color:var(--testo2)}
+.notte .date{font:500 15px/1.4 var(--mono);color:var(--testo2);text-align:right;white-space:nowrap}
+.passi{display:grid;gap:0}
+.passo{display:grid;grid-template-columns:64px 1fr;gap:14px;padding:10px 0;border-top:1px solid var(--riga)}
+.passo:first-child{border-top:0;padding-top:0}
+.passo time{font:600 17px/1.5 var(--mono)}
+.passo b{font-weight:700}
+.passo span{display:block;color:var(--testo2);font-size:15px}
+.margine{display:flex;gap:14px;align-items:baseline;margin-top:14px;padding-top:14px;border-top:1px solid var(--riga)}
+.margine b{font:600 30px/1 var(--mono);letter-spacing:-.03em}
+.margine span{font-size:15px;color:var(--testo2)}
+ul.punti{margin:0;padding:0;list-style:none;display:grid;gap:12px}
+ul.punti li{padding-left:0;font-size:15px;color:var(--testo2);line-height:1.5}
+ul.punti li b{display:block;color:var(--ink);font-size:16px;font-weight:700}
+.giorno{background:var(--superficie);border-radius:16px;overflow:hidden;margin-bottom:20px}
+.giorno img{aspect-ratio:16/7}
+.giorno .testa{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:center;padding:18px 20px 6px}
+.giorno .testa b{display:block;font-size:22px;font-weight:900;letter-spacing:-.02em;line-height:1.1}
+.giorno .testa span{display:block;font-size:15px;color:var(--testo2);margin-top:2px}
+.momenti{padding:8px 20px 20px;display:grid;gap:10px}
+.momento{display:grid;grid-template-columns:52px 1fr;gap:12px;align-items:baseline}
+.momento time{font:600 15px/1.5 var(--mono);color:var(--linea)}
+.momento div{font-size:15px;line-height:1.5;color:var(--testo2)}
+.momento div b{color:var(--ink);font-weight:700}
+.momento.nota{grid-template-columns:1fr}
+.momento.nota div{padding-left:0;font-size:14px}
+.g-tokyo{--linea:var(--tokyo)}.g-kyoto{--linea:var(--kyoto)}.g-koya{--linea:var(--koya)}.g-osaka{--linea:var(--osaka)}.g-viaggio{--linea:var(--viaggio)}
+.fascia{background:var(--linea);color:var(--carta);border-radius:16px;padding:28px 20px 24px;margin:40px 0 20px;display:flex;justify-content:space-between;align-items:flex-end;gap:16px}
+.fascia h3{margin:0;font-size:40px;line-height:.95;letter-spacing:-.04em;font-weight:900}
+.fascia div{font:500 15px/1.5 var(--mono);text-align:right;opacity:.92}
+.t-tokyo{--linea:var(--tokyo)}.t-kyoto{--linea:var(--kyoto)}.t-koya{--linea:var(--koya)}.t-osaka{--linea:var(--osaka)}
+.hotel .corpo h4{margin:0;font-size:22px;font-weight:900;letter-spacing:-.02em;line-height:1.1}
+.hotel .corpo .dove{font-size:15px;color:var(--testo2);margin:6px 0 14px}
+.hotel img{aspect-ratio:16/9}
+.fatti{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fatti div b{display:block;font:600 22px/1.1 var(--mono);letter-spacing:-.02em}
+.fatti div span{display:block;font-size:14px;color:var(--testo2);margin-top:2px}
+.hotel .avviso{margin:14px 0 0;padding-top:14px;border-top:1px solid var(--riga);font-size:15px;color:var(--testo2)}
+.hotel .avviso b{color:var(--ink)}
+.luoghi{display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:20px}
+.luogo{background:var(--superficie);border-radius:16px;overflow:hidden}
+.luogo img{aspect-ratio:2/1}
+.luogo .corpo{padding:16px 20px 20px}
+.luogo .capo{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.luogo h4{margin:0;font-size:19px;font-weight:700;line-height:1.2}
+.luogo .durata{font:500 14px/1.4 var(--mono);color:var(--testo2);white-space:nowrap}
+.luogo p{margin:6px 0 0;font-size:15px;line-height:1.5;color:var(--testo2)}
+.luogo .v{display:block;margin-top:8px;font-size:14px;color:var(--ink);font-weight:700}
+.tempi{font-size:15px;color:var(--testo2);margin:0 0 8px}
+.tempi b{color:var(--ink)}
 table{width:100%;border-collapse:collapse;font-size:15px}
-th{font:400 13px/1.3 var(--mono);color:var(--ink-70);text-align:left;padding:4px 8px 6px 0;border-bottom:2px solid var(--ink)}
-td{padding:7px 8px 7px 0;border-bottom:1px solid var(--riga);vertical-align:top}
+th{font:500 14px/1.3 var(--sans);color:var(--testo2);text-align:left;padding:0 8px 10px 0;border-bottom:2px solid var(--riga)}
+td{padding:10px 8px 10px 0;border-bottom:1px solid var(--riga);vertical-align:top}
 td:last-child,th:last-child{padding-right:0}
-td small{display:block;font-size:13px;line-height:1.35;color:var(--ink-70)}
+td small{display:block;font-size:14px;line-height:1.4;color:var(--testo2)}
 .n{font-family:var(--mono);text-align:right;white-space:nowrap}
 th.n{text-align:right}
-td.y{color:var(--ink-70)}
-tr.sub td{font-weight:700;border-bottom:0;border-top:1px solid var(--ink)}
-tr.tot td{border-bottom:0;border-top:2px solid var(--ink);font-weight:700;padding-top:10px}
-tr.giu td{color:var(--ink-70)}
-.gruppo{font-weight:700;padding:16px 0 4px}
-.giorno{display:grid;grid-template-columns:84px 1fr;gap:12px;padding:12px 0 12px 12px;border-left:4px solid var(--linea);border-bottom:1px solid var(--riga)}
-.g-viaggio{--linea:var(--ink)}.g-tokyo{--linea:var(--tokyo)}.g-kyoto{--linea:var(--kyoto)}.g-koya{--linea:var(--koya)}.g-osaka{--linea:var(--osaka)}
-.giorno .d b{display:block;font:600 15px/1.3 var(--mono)}
-.giorno .d span{display:block;font-size:13px;font-weight:700;color:var(--linea);line-height:1.3;margin-top:2px}
-.giorno .d em{display:block;font:500 13px/1.3 var(--mono);font-style:normal;color:var(--linea);border-top:1px solid var(--linea);margin-top:8px;padding-top:4px}
-.m{display:grid;grid-template-columns:48px 1fr;gap:8px;font-size:15px;line-height:1.4;margin-bottom:5px}
-.m .h{font:600 14px/1.5 var(--mono);color:var(--linea)}
-.m .t{color:var(--ink-70)}.m .t b{color:var(--ink)}
-.tappa{margin-top:24px}
-.fascia{border-top:10px solid var(--linea);padding:12px 0;display:flex;justify-content:space-between;align-items:flex-end;gap:16px}
-.fascia h3{margin:0;font-size:28px;line-height:1;letter-spacing:-.03em;font-weight:800}
-.fascia .quando{font:13px/1.5 var(--mono);color:var(--ink-70);text-align:right}
-.t-tokyo{--linea:var(--tokyo)}.t-kyoto{--linea:var(--kyoto)}.t-koya{--linea:var(--koya)}.t-osaka{--linea:var(--osaka)}
-.avviso{color:var(--ink-70);font-size:15px;margin:0 0 12px}
-.alloggio{background:var(--velo);padding:16px;margin:12px 0 20px;display:grid;grid-template-columns:1fr;gap:12px}
-.alloggio .foto{aspect-ratio:16/9;overflow:hidden;background:#E3DFD5}
-.alloggio .foto img,.meta .foto img{width:100%;height:100%;object-fit:cover;display:block}
-.meta .foto{aspect-ratio:2/1;overflow:hidden;background:var(--velo);margin-bottom:8px}
-.alloggio .et{font-size:13px;font-weight:700;color:var(--ink-70);margin-bottom:4px}
-.alloggio h4{margin:0 0 4px;font-size:20px;letter-spacing:-.02em;line-height:1.15}
-.alloggio .posto{color:var(--ink-70);font-size:15px;margin-bottom:10px}
-.numeri{display:grid;grid-template-columns:1fr 1fr;gap:6px 16px;border-top:1px solid var(--riga);padding-top:10px;font-size:13px;color:var(--ink-70)}
-.numeri b{font-size:17px;color:var(--ink);margin-right:6px}
-.alloggio p{margin:12px 0 0;font-size:15px;color:var(--ink-70)}
-.alloggio p b{color:var(--ink)}
-.sep{font-size:13px;font-weight:700;color:var(--ink-70);margin:16px 0 8px}
-.mete{display:grid;grid-template-columns:1fr;gap:14px 24px}
-.meta .capo{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
-.meta .ti{font-weight:700;font-size:16px}.meta .du{font:13px var(--mono);color:var(--ink-70);white-space:nowrap}
-.meta p{margin:2px 0 0;font-size:15px;line-height:1.45;color:var(--ink-70)}
-.meta p .v{display:block;color:var(--ink);font-size:14px;margin-top:4px}
-.tempi{display:grid;grid-template-columns:84px 1fr;gap:12px;margin-top:20px;padding-top:12px;border-top:2px solid var(--linea);font-size:15px;color:var(--ink-70)}
-.tempi b{color:var(--ink)}
-ul{margin:8px 0;padding-left:18px}li{margin:5px 0}
-li.k b{font-family:var(--mono);font-weight:600}
-.passo{display:grid;grid-template-columns:56px 1fr;gap:12px;padding:6px 0;border-bottom:1px solid var(--riga)}
-.passo .ora{font:500 16px var(--mono)}
-.passo span{color:var(--ink-70)}
-.margine{display:grid;grid-template-columns:56px 1fr;gap:12px;padding-top:12px;align-items:baseline;color:var(--ink-70);font-size:15px}
-.margine b{font:600 20px var(--mono);color:var(--ink)}
-footer{margin-top:48px;padding-top:12px;border-top:2px solid var(--ink);font:13px/1.5 var(--mono);color:var(--ink-70)}
-@media(min-width:720px){h1{font-size:56px}.linea{grid-template-columns:repeat(4,1fr)}.tabs{flex-wrap:nowrap}.orari{font-size:18px}.alloggio{grid-template-columns:280px 1fr;align-items:center;gap:24px}.alloggio .foto{aspect-ratio:4/3}.riga{grid-template-columns:128px 1fr}.giorno{grid-template-columns:120px 1fr}.m{grid-template-columns:56px 1fr}.mete{grid-template-columns:1fr 1fr}.tempi,.passo,.margine{grid-template-columns:120px 1fr}.due{display:grid;grid-template-columns:1fr 1fr;gap:0 32px;align-items:start}}
+td.y{color:var(--testo2)}
+tr.gruppo td{padding:18px 0 6px;border-bottom:0;font-weight:900;font-size:16px}
+tr.sub td{font-weight:700;border-bottom:0;border-top:2px solid var(--riga)}
+tr.tot td{border-bottom:0;border-top:2px solid var(--ink);font-weight:700;padding-top:12px;font-size:16px}
+tr.giu td{color:var(--testo2)}
+.todo{margin:0;padding:0;list-style:none}
+.todo li{display:grid;grid-template-columns:88px 1fr;gap:14px;padding:12px 0;border-top:1px solid var(--riga);font-size:15px;color:var(--testo2);line-height:1.5}
+.todo li:first-child{border-top:0;padding-top:0}
+.todo li time{font:600 15px/1.5 var(--mono);color:var(--ink)}
+.todo li b{color:var(--ink);font-weight:700}
+footer{margin-top:48px;padding-top:16px;border-top:2px solid var(--riga);font-size:14px;line-height:1.5;color:var(--testo2)}
+@media(min-width:720px){h1{font-size:72px}.wrap{padding:0 24px 80px}.tabs{flex-wrap:nowrap}.tabs a{font-size:17px}.luoghi{grid-template-columns:1fr 1fr}.due{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}.tiles{grid-template-columns:repeat(4,1fr)}.card.foto.hotel{display:grid;grid-template-columns:320px 1fr}.hotel img{aspect-ratio:4/3;height:100%}.giorno{display:grid;grid-template-columns:260px 1fr}.giorno img{aspect-ratio:auto;height:100%}.giorno .testa{padding-top:20px}.fascia{padding:36px 28px 30px}.fascia h3{font-size:56px}.card{padding:24px}.card.foto .corpo{padding:24px}}
+@media(prefers-reduced-motion:no-preference){.tabs a{transition:color .2s}}
 </style>
 </head>
 <body>
 <div class="wrap">
 
 <header>
-  <h1>Giappone<small>28 dicembre 2026 &ndash; 9 gennaio 2027, quattro persone, undici notti</small></h1>
-  <div class="linea">
-    <div class="fermata"><b>Tokyo</b><span>29 dic &ndash; 1 gen</span><span>4 notti</span></div>
-    <div class="fermata"><b>Kyoto</b><span>2 &ndash; 5 gen</span><span>4 notti</span></div>
-    <div class="fermata"><b>Monte Koya</b><span>6 gen</span><span>1 notte</span></div>
-    <div class="fermata"><b>Osaka</b><span>7 &ndash; 8 gen</span><span>2 notti</span></div>
+  <h1>Giappone</h1>
+  <p class="sotto">Dal 28 dicembre 2026 al 9 gennaio 2027, in quattro. Dieci notti a terra, una in volo.</p>
+  <div class="mappa">
+    <div class="fermata f-tokyo"><span class="anello">T</span><b>Tokyo</b><span>29 dic &ndash; 1 gen</span></div>
+    <div class="fermata f-kyoto"><span class="anello">K</span><b>Kyoto</b><span>2 &ndash; 5 gen</span></div>
+    <div class="fermata f-koya"><span class="anello">M</span><b>Monte Koya</b><span>6 gen</span></div>
+    <div class="fermata f-osaka"><span class="anello">O</span><b>Osaka</b><span>7 &ndash; 8 gen</span></div>
   </div>
 </header>
 
@@ -118,427 +159,486 @@ footer{margin-top:48px;padding-top:12px;border-top:2px solid var(--ink);font:13p
 
 <!-- ============ RIEPILOGO ============ -->
 <section id="riepilogo" class="on">
-  <h2><span>Voli</span><span class="coda">prenotazione confermata</span></h2>
-  <div class="riga">
-    <div class="q">Andata<span>lun 28 dic</span></div>
-    <div><div class="orari"><span>FCO 15:05</span> <i>&rarr;</i> <span>HND 11:20 <sup>+1</sup></span></div>
-      <div class="c">ITA Airways AZ792, diretto, 12h 15. Fiumicino Terminal 1, i banchi chiudono 60 minuti prima. Haneda Terminal 3.<br>Bagagli: <b>stiva 23 kg</b>, a mano 8 kg pi&ugrave; un oggetto personale.</div></div>
+  <h2>Quanto costa<small>a persona, cibo escluso, al cambio di 177 &yen; per euro</small></h2>
+  <div class="tiles">
+    <div class="tile somma"><b>2.759 &euro;</b><span>a testa da Napoli, con tutto dentro tranne i pasti</span></div>
+    <div class="tile"><b>1.510 &euro;</b><span>il volo, pagato</span></div>
+    <div class="tile"><b>592 &euro;</b><span>undici notti, pagate</span></div>
+    <div class="tile"><b>656 &euro;</b><span>treni, ingressi, tasse, eSIM, assicurazione</span></div>
   </div>
-  <div class="riga">
-    <div class="q">Ritorno<span>notte tra l'8 e il 9</span></div>
-    <div><div class="orari"><span>HND 00:05</span> <i>&rarr;</i> <span>DXB 06:55</span> <i>&rarr;</i> <span>FCO 12:40</span></div>
-      <div class="c">Emirates EK313 e EK97, scalo di 2 ore a Dubai sullo stesso biglietto, 20h 35. Haneda Terminal 3; il check-in apre circa tre ore prima.<br>Bagagli: <b>stiva 30 kg</b>, a mano 7 kg, <b>nessun oggetto personale</b> in pi&ugrave;.</div></div>
-  </div>
-  <p class="nota">Carlo e Maurizio sono su una prenotazione, Francesco e Davis sulla loro: gli orari qui sopra valgono se tutti e quattro sono sugli stessi voli. Il volo di ritorno parte a mezzanotte e cinque del 9: in aeroporto si entra la sera dell'8.</p>
 
-  <h2><span>Notti</span><span class="coda">prenotazione confermata</span></h2>
-  <table>
-    <tr><th>Struttura</th><th class="n">Arrivo</th><th class="n">Partenza</th><th class="n">Notti</th></tr>
-    <tr><td>The Edo Sakura<small>Tokyo, Iriya &middot; 9,0 su Booking</small></td><td class="n">29 dic</td><td class="n">2 gen</td><td class="n">4</td></tr>
-    <tr><td>Oyado Kyoto Shinmachi<small>Kyoto, Shimogyo &middot; 8,6 &middot; senza personale</small></td><td class="n">2 gen</td><td class="n">6 gen</td><td class="n">4</td></tr>
-    <tr><td>Shukubo Soujiin<small>Koyasan, nel tempio &middot; 9,1</small></td><td class="n">6 gen</td><td class="n">7 gen</td><td class="n">1</td></tr>
-    <tr><td>APA Hotel &amp; Resort Osaka Namba Ekimae Tower<small>Osaka, Namba &middot; 8,4</small></td><td class="n">7 gen</td><td class="n">9 gen</td><td class="n">2</td></tr>
-    <tr class="tot"><td>Undici notti pagate, dieci dormite<small>591,79 &euro; a persona</small></td><td></td><td></td><td class="n">11</td></tr>
-  </table>
-  <p class="nota">Il check-out &egrave; il giorno in cui si riparte: ogni partenza cade sull'arrivo successivo. A Osaka la camera resta presa anche per la notte dell'8, che si passa in volo: serve a tenere le valigie in camera durante l'ultima giornata.</p>
+  <h2>Voli</h2>
+  <div class="card">
+    <div class="volo">
+      <div><div class="ap">FCO</div><div class="ora">15:05</div><div class="dove">lun 28 dic, Roma T1</div></div>
+      <div class="freccia">12h 15</div>
+      <div class="a"><div class="ap">HND</div><div class="ora">11:20</div><div class="dove">mar 29 dic, Tokyo T3</div></div>
+    </div>
+    <div class="dett"><b>ITA Airways AZ792</b>, diretto. Stiva 23 kg, a mano 8 kg pi&ugrave; un oggetto personale. I banchi chiudono alle 14:05.</div>
+  </div>
+  <div class="card">
+    <div class="volo">
+      <div><div class="ap">HND</div><div class="ora">00:05</div><div class="dove">sab 9 gen, Tokyo T3</div></div>
+      <div class="freccia">20h 35</div>
+      <div class="a"><div class="ap">FCO</div><div class="ora">12:40</div><div class="dove">sab 9 gen, Roma</div></div>
+    </div>
+    <div class="dett"><b>Emirates EK313 e EK97</b>, due ore di scalo a Dubai (06:55 &ndash; 08:55). Stiva 30 kg, a mano 7 kg, nessun oggetto personale. In aeroporto si entra la sera dell'8.</div>
+  </div>
+  <p class="tempi">Carlo e Maurizio sono su una prenotazione, Francesco e Davis sulla loro: da confermare che siano gli stessi voli.</p>
 
   <div class="due">
   <div>
-  <h2><span>Costi</span><span class="coda">a persona, cibo escluso<br>cambio 177 &yen; per 1 &euro;</span></h2>
-  <table>
-    <tr><td>Volo<small>pagato</small></td><td class="n">1.510,50 &euro;</td></tr>
-    <tr><td>Alloggi<small>undici notti, pagati</small></td><td class="n">591,79 &euro;</td></tr>
-    <tr><td>Trasporti in Giappone<small>67.480 &yen;, Shinkansen a tariffa SmartEX</small></td><td class="n">381,11 &euro;</td></tr>
-    <tr><td>Ingressi<small>nove mete, 13.700 &yen;</small></td><td class="n">77,37 &euro;</td></tr>
-    <tr><td>Tassa di soggiorno<small>in loco, 1.600 &yen;</small></td><td class="n">9,04 &euro;</td></tr>
-    <tr><td>eSIM dati<small>tredici giorni</small></td><td class="n">30,00 &euro;</td></tr>
-    <tr><td>Assicurazione medico e bagaglio<small>stima, da comprare</small></td><td class="n">45,00 &euro;</td></tr>
-    <tr><td>Leonardo Express<small>Termini &harr; Fiumicino, 14 &euro; a tratta</small></td><td class="n">28,00 &euro;</td></tr>
-    <tr class="tot"><td>Uguale per tutti</td><td class="n">2.672,81 &euro;</td></tr>
-    <tr class="giu"><td>Pi&ugrave; il treno da Napoli, pagato<small>Carlo e Maurizio</small></td><td class="n">2.758,61 &euro;</td></tr>
-    <tr class="giu"><td>Pi&ugrave; il treno da Milano o Trento, stima 150 &euro;<small>Francesco e Davis</small></td><td class="n">2.822,81 &euro;</td></tr>
-  </table>
-  <p class="nota">Fuori dal conto restano i pasti: le tavole scelte valgono 70.650 &yen; a testa per chi le fa tutte (399 &euro;), 28.300 &yen; per chi salta il sushi del 30 (160 &euro;). Shopping e coin locker non sono previsti.</p>
+  <h2>Dove si dorme</h2>
+  <div class="card notti">
+    <div class="notte f-tokyo"><span class="anello">T</span><div class="nome">The Edo Sakura<span>Tokyo, Iriya</span></div><div class="date">29 dic &ndash; 2 gen<br>4 notti</div></div>
+    <div class="notte f-kyoto"><span class="anello">K</span><div class="nome">Oyado Kyoto Shinmachi<span>Kyoto, Shimogyo</span></div><div class="date">2 &ndash; 6 gen<br>4 notti</div></div>
+    <div class="notte f-koya"><span class="anello">M</span><div class="nome">Shukubo Soujiin<span>Koyasan, nel tempio</span></div><div class="date">6 &ndash; 7 gen<br>1 notte</div></div>
+    <div class="notte f-osaka"><span class="anello">O</span><div class="nome">APA Namba Ekimae Tower<span>Osaka, Namba</span></div><div class="date">7 &ndash; 9 gen<br>2 notti</div></div>
+  </div>
+  <p class="tempi">A Osaka la camera resta presa anche la notte dell'8: le valigie stanno in camera fino alla sera.</p>
   </div>
 
   <div>
-  <h2><span>Rientro in aeroporto</span><span class="coda">venerd&igrave; 8 gennaio</span></h2>
-  <div class="passo"><div class="ora">17:05</div><div><b>Namba</b> <span>valigie riprese in camera, metro Midosuji, 16 minuti</span></div></div>
-  <div class="passo"><div class="ora">18:06</div><div><b>Shin-Osaka</b> <span>Nozomi 44 per Tokyo</span></div></div>
-  <div class="passo"><div class="ora">20:25</div><div><b>Shinagawa</b> <span>2h 19, diretto</span></div></div>
-  <div class="passo"><div class="ora">20:45</div><div><b>Haneda T3</b> <span>linea Keikyu da Shinagawa, un quarto d'ora</span></div></div>
-  <div class="passo"><div class="ora">00:05</div><div><b>Decollo</b> <span>&egrave; gi&agrave; sabato 9</span></div></div>
-  <div class="margine"><b>3h 20</b><div>fra l'arrivo a Haneda e il decollo. Dentro ci stanno il check-in Emirates, il controllo dei passaporti e il rimborso del tax free, che dal 1 novembre si chiede in aeroporto dopo la dogana. Il Nozomi delle 18:30 arriva a Shinagawa alle 20:49 e regge ancora.</div></div>
+  <h2>Rientro, venerd&igrave; 8</h2>
+  <div class="card">
+    <div class="passi">
+      <div class="passo"><time>17:05</time><div><b>Namba</b><span>valigie dalla camera, metro Midosuji, 16 minuti</span></div></div>
+      <div class="passo"><time>18:06</time><div><b>Shin-Osaka</b><span>Nozomi 44</span></div></div>
+      <div class="passo"><time>20:25</time><div><b>Shinagawa</b><span>Keikyu per Haneda, un quarto d'ora</span></div></div>
+      <div class="passo"><time>20:45</time><div><b>Haneda T3</b><span>check-in, passaporti, rimborso del tax free</span></div></div>
+      <div class="passo"><time>00:05</time><div><b>Decollo</b><span>&egrave; gi&agrave; sabato 9</span></div></div>
+    </div>
+    <div class="margine"><b>3h 20</b><span>di margine a Haneda. Il Nozomi delle 18:30 (Shinagawa 20:49) regge ancora.</span></div>
+  </div>
   </div>
   </div>
 
-  <h2><span>Da sapere prima di partire</span></h2>
-  <ul>
-    <li><b>Valigie sullo Shinkansen</b>: se la somma dei tre lati supera i 160 cm (una valigia da 70-75 cm ci arriva) serve il posto riservato con spazio bagagli, da scegliere quando si prenota; senza, 1.000 &yen; a bordo.</li>
-    <li><b>Visit Japan Web</b> prima di partire: d&agrave; i codici QR per immigrazione e dogana. Passaporto valido per tutto il soggiorno, nessun visto.</li>
-    <li><b>Contanti</b>: Kamo to Negi e molti templi prendono solo contanti; gli sportelli dei 7-Eleven funzionano anche a Capodanno, le banche sono chiuse dal 31 al 3.</li>
-    <li><b>Farmaci</b>: vietati i decongestionanti con pi&ugrave; del 10% di pseudoefedrina; con pi&ugrave; dell'1% di codeina serve un permesso. Fino a un mese di farmaci con ricetta si porta senza certificato.</li>
-    <li><b>Tax free dal 1 novembre</b>: in negozio si paga tutto, l'IVA si recupera a Haneda dopo la dogana. Soglia 5.000 &yen; per negozio e per giorno: conviene concentrare gli acquisti.</li>
-    <li><b>Notte del 31</b>: l'anno scorso la metropolitana di Tokyo non ha fatto servizio notturno, la JR s&igrave;. Dallo Zojo-ji si torna in Yamanote da Hamamatsucho a Uguisudani, dieci minuti a piedi dall'hotel.</li>
-  </ul>
+  <h2>Da sapere</h2>
+  <div class="card">
+    <ul class="punti">
+      <li><b>Valigie sullo Shinkansen</b>Sopra i 160 cm di somma dei lati serve il posto con spazio bagagli, scelto quando si prenota. Senza: 1.000 &yen; a bordo.</li>
+      <li><b>Visit Japan Web</b>Da compilare prima: d&agrave; i QR per immigrazione e dogana. Passaporto valido per il soggiorno, nessun visto.</li>
+      <li><b>Contanti</b>Kamo to Negi e molti templi prendono solo contanti. I bancomat dei 7-Eleven funzionano anche a Capodanno.</li>
+      <li><b>Farmaci</b>Niente decongestionanti con pseudoefedrina sopra il 10%; con codeina sopra l'1% serve un permesso.</li>
+      <li><b>Tax free dal 1 novembre</b>In negozio si paga tutto, l'IVA si recupera a Haneda dopo la dogana. Minimo 5.000 &yen; per negozio e per giorno.</li>
+      <li><b>Notte del 31</b>La metro di Tokyo l'anno scorso non ha fatto notturno, la JR s&igrave;: dallo Zojo-ji si torna in Yamanote da Hamamatsucho a Uguisudani.</li>
+    </ul>
+  </div>
 </section>
 
 <!-- ============ GIORNI ============ -->
 <section id="giorni">
-  <h2><span>Giorno per giorno</span><span class="coda">28 dic &ndash; 9 gen<br>orari indicativi</span></h2>
+  <h2>Giorno per giorno<small>orari indicativi; i treni giapponesi di fine anno escono a novembre</small></h2>
 
-  <div class="giorno g-viaggio">
-    <div class="d"><b>lun 28 dic</b><span>In volo</span></div>
-    <div>
-      <div class="m"><div class="h">10:25</div><div class="t">Napoli Centrale, <b>FR 9630</b> per Roma Termini (11:35), poi Leonardo Express (Carlo e Maurizio)</div></div>
-      <div class="m"><div class="h">15:05</div><div class="t">Roma Fiumicino T1, <b>ITA diretto</b>, 12h 15, notte a bordo</div></div>
+  <article class="giorno g-viaggio">
+    <div class="testa"><span class="anello">28</span><div><b>luned&igrave; 28 dicembre</b><span>Napoli, Roma, in volo</span></div></div>
+    <div class="momenti">
+      <div class="momento"><time>10:25</time><div><b>FR 9630</b> da Napoli Centrale, Termini alle 11:35, poi Leonardo Express</div></div>
+      <div class="momento"><time>15:05</time><div><b>AZ792</b> da Fiumicino T1, notte a bordo</div></div>
     </div>
-  </div>
+  </article>
 
-  <div class="giorno g-tokyo">
-    <div class="d"><b>mar 29 dic</b><span>Tokyo</span></div>
+  <article class="giorno g-tokyo">
+    <img src="foto/sensoji.jpg" alt="" loading="lazy">
     <div>
-      <div class="m"><div class="h">11:20</div><div class="t">Atterraggio a <b>Haneda T3</b>: immigrazione e dogana coi QR di Visit Japan Web</div></div>
-      <div class="m"><div class="h">12:30</div><div class="t">Keikyu e linea Asakusa fino a Ningyocho, poi Hibiya fino a Iriya: 56 minuti, 650 &yen;</div></div>
-      <div class="m"><div class="h">13:30</div><div class="t">Valigie in deposito all'<b>Edo Sakura</b>, la camera &egrave; dalle 15</div></div>
-      <div class="m"><div class="h">14:30</div><div class="t"><b>Senso-ji e Asakusa</b>: alle 16:36 tramonta e si accendono le lanterne</div></div>
-      <div class="m"><div class="h">18:30</div><div class="t">Cena presto contro il fuso: <b>Kamo to Negi</b> a Okachimachi, solo contanti</div></div>
+    <div class="testa"><span class="anello">29</span><div><b>marted&igrave; 29 dicembre</b><span>Tokyo, Asakusa</span></div></div>
+    <div class="momenti">
+      <div class="momento"><time>11:20</time><div>Atterraggio a <b>Haneda T3</b>, QR di Visit Japan Web alla mano</div></div>
+      <div class="momento"><time>12:30</time><div>Keikyu e Asakusa fino a Ningyocho, poi Hibiya fino a Iriya: 56 minuti</div></div>
+      <div class="momento"><time>13:30</time><div>Valigie all'<b>Edo Sakura</b>, camera dalle 15</div></div>
+      <div class="momento"><time>14:30</time><div><b>Senso-ji e Asakusa</b>, tramonto alle 16:36</div></div>
+      <div class="momento"><time>18:30</time><div><b>Kamo to Negi</b> a Okachimachi, solo contanti</div></div>
     </div>
-  </div>
+    </div>
+  </article>
 
-  <div class="giorno g-tokyo">
-    <div class="d"><b>mer 30 dic</b><span>Tokyo</span></div>
+  <article class="giorno g-tokyo">
+    <img src="foto/tsukiji.jpg" alt="" loading="lazy">
     <div>
-      <div class="m"><div class="h">07:30</div><div class="t"><b>Mercato di Tsukiji</b>, colazione di pesce sul posto: &egrave; uno dei due giorni pi&ugrave; pieni dell'anno</div></div>
-      <div class="m"><div class="h">11:00</div><div class="t"><b>Da decidere</b>: Odaiba era nel programma per la statua del Gundam, che non c'&egrave; pi&ugrave;. Proposta: Harajuku e Cat Street nel pomeriggio, l'unico momento in cui i negozi piccoli sono aperti</div></div>
-      <div class="m"><div class="h">17:00</div><div class="t"><b>Shinjuku</b>: Omoide Yokocho e Golden Gai</div></div>
-      <div class="m"><div class="h">20:00</div><div class="t"><b>Kiwami</b> a Ginza, Carlo e Maurizio, prenotato. Gli altri due sera libera</div></div>
+    <div class="testa"><span class="anello">30</span><div><b>mercoled&igrave; 30 dicembre</b><span>Tokyo, Tsukiji e Shinjuku</span></div></div>
+    <div class="momenti">
+      <div class="momento"><time>07:30</time><div><b>Mercato di Tsukiji</b>, colazione di pesce</div></div>
+      <div class="momento"><time>11:00</time><div><b>Da decidere</b>: il Gundam di Odaiba non c'&egrave; pi&ugrave;. Proposta: Harajuku e Cat Street</div></div>
+      <div class="momento"><time>17:00</time><div><b>Shinjuku</b>: Omoide Yokocho e Golden Gai</div></div>
+      <div class="momento"><time>20:00</time><div><b>Kiwami</b> a Ginza, Carlo e Maurizio, prenotato</div></div>
     </div>
-  </div>
+    </div>
+  </article>
 
-  <div class="giorno g-tokyo">
-    <div class="d"><b>gio 31 dic</b><span>Tokyo</span></div>
+  <article class="giorno g-tokyo">
+    <img src="foto/akihabara.jpg" alt="" loading="lazy">
     <div>
-      <div class="m"><div class="h">10:00</div><div class="t"><b>Ameyoko</b>, il giorno pi&ugrave; affollato dell'anno</div></div>
-      <div class="m"><div class="h">13:30</div><div class="t">Akihabara, a due fermate da Ueno</div></div>
-      <div class="m"><div class="h">16:20</div><div class="t"><b>Shibuya Sky</b>, tramonto alle 16:37; poi Parco con Nintendo Tokyo, orario del 31 da verificare</div></div>
-      <div class="m"><div class="h">22:30</div><div class="t">Zojo-ji: i <b>108 rintocchi</b> da mezzanotte. Rientro in JR Yamanote da Hamamatsucho a Uguisudani</div></div>
+    <div class="testa"><span class="anello">31</span><div><b>gioved&igrave; 31 dicembre</b><span>Tokyo, l'ultimo dell'anno</span></div></div>
+    <div class="momenti">
+      <div class="momento"><time>10:00</time><div><b>Ameyoko</b>, il giorno pi&ugrave; pieno dell'anno</div></div>
+      <div class="momento"><time>13:30</time><div><b>Akihabara</b></div></div>
+      <div class="momento"><time>16:20</time><div><b>Shibuya Sky</b>, tramonto alle 16:37; poi Parco e Nintendo Tokyo</div></div>
+      <div class="momento"><time>22:30</time><div><b>Zojo-ji</b>, i 108 rintocchi da mezzanotte. Rientro in Yamanote da Hamamatsucho</div></div>
     </div>
-  </div>
+    </div>
+  </article>
 
-  <div class="giorno g-tokyo">
-    <div class="d"><b>ven 1 gen</b><span>Monte Fuji</span><em>treni da ritirare in stazione JR</em></div>
+  <article class="giorno g-tokyo">
+    <img src="foto/fuji.jpg" alt="" loading="lazy">
     <div>
-      <div class="m"><div class="h">08:30</div><div class="t"><b>Fuji Excursion 7 da Shinjuku</b>, diretto, posti riservati</div></div>
-      <div class="m"><div class="h">10:13</div><div class="t">Shimoyoshida: <b>pagoda Chureito</b>, 398 gradini, la folla dell'alba sta gi&agrave; rientrando</div></div>
-      <div class="m"><div class="h">12:30</div><div class="t"><b>Hatsumode</b> al Kitaguchi Hongu Fuji Sengen, una fermata di treno</div></div>
-      <div class="m"><div class="h">14:30</div><div class="t">Lago Kawaguchi, la riva e la funivia (1.200 &yen;, apertura dell'1 da confermare). Tramonto alle 16:43</div></div>
-      <div class="m"><div class="h">16:48</div><div class="t">Fuji Excursion per Shinjuku, arrivo verso le 18:45 (l'ultimo &egrave; alle 17:41). Sera libera, Kamo to Negi di appoggio</div></div>
-      <div class="m"><div class="h"></div><div class="t">Col cielo coperto si resta in citt&agrave;: buste della fortuna a Ikebukuro e hatsumode al Meiji Jingu</div></div>
+    <div class="testa"><span class="anello">1</span><div><b>venerd&igrave; 1 gennaio</b><span>Monte Fuji</span></div></div>
+    <div class="momenti">
+      <div class="momento"><time>08:30</time><div><b>Fuji Excursion 7</b> da Shinjuku, biglietti gi&agrave; ritirati in stazione JR</div></div>
+      <div class="momento"><time>10:13</time><div>Shimoyoshida: <b>pagoda Chureito</b>, 398 gradini</div></div>
+      <div class="momento"><time>12:30</time><div><b>Hatsumode</b> al Kitaguchi Hongu Fuji Sengen</div></div>
+      <div class="momento"><time>14:30</time><div><b>Lago Kawaguchi</b>, funivia 1.200 &yen;; tramonto alle 16:43</div></div>
+      <div class="momento"><time>16:48</time><div>Fuji Excursion per Shinjuku, arrivo verso le 18:45. Sera libera</div></div>
+      <div class="momento nota"><div>Col cielo coperto si resta in citt&agrave;: Ikebukuro e Meiji Jingu.</div></div>
     </div>
-  </div>
+    </div>
+  </article>
 
-  <div class="giorno g-kyoto">
-    <div class="d"><b>sab 2 gen</b><span>Tokyo &rarr;<br>Kyoto</span><em>sveglia 5:00</em></div>
+  <article class="giorno g-kyoto">
+    <img src="foto/gion.jpg" alt="" loading="lazy">
     <div>
-      <div class="m"><div class="h">06:00</div><div class="t"><b>Nozomi 1 da Tokyo</b> (Iriya &rarr; Ueno &rarr; Tokyo), posti riservati con spazio valigie. Il check-out si concorda la sera prima: la reception apre alle 7. In alternativa un Nozomi verso le 7:30, Kyoto alle 9:40</div></div>
-      <div class="m"><div class="h">08:08</div><div class="t"><b>Kyoto</b>: valigie in deposito a Kyoto Station, poi giornata piena. L'Oyado apre alle 16 e non ha personale</div></div>
-      <div class="m"><div class="h">16:00</div><div class="t">Self check-in all'Oyado, orario da comunicare prima</div></div>
-      <div class="m"><div class="h">17:00</div><div class="t">Gion e Pontocho, le case di legno</div></div>
+    <div class="testa"><span class="anello">2</span><div><b>sabato 2 gennaio</b><span>Tokyo, Kyoto</span></div></div>
+    <div class="momenti">
+      <div class="momento"><time>06:00</time><div><b>Nozomi 1 da Tokyo</b>, posti con spazio valigie. Check-out concordato la sera prima, oppure un Nozomi verso le 7:30</div></div>
+      <div class="momento"><time>08:08</time><div><b>Kyoto</b>: valigie in deposito in stazione, poi giornata piena</div></div>
+      <div class="momento"><time>16:00</time><div>Self check-in all'<b>Oyado</b></div></div>
+      <div class="momento"><time>17:00</time><div><b>Gion e Pontocho</b></div></div>
     </div>
-  </div>
+    </div>
+  </article>
 
-  <div class="giorno g-kyoto">
-    <div class="d"><b>dom 3 gen</b><span>Kyoto</span></div>
+  <article class="giorno g-kyoto">
+    <img src="foto/fushimi.jpg" alt="" loading="lazy">
     <div>
-      <div class="m"><div class="h">07:30</div><div class="t"><b>Fushimi Inari</b>: prima delle nove, la fascia meno piena dell'hatsumode</div></div>
-      <div class="m"><div class="h">11:45</div><div class="t">Ginkaku-ji, che d'inverno chiude alle 16:30</div></div>
-      <div class="m"><div class="h">13:00</div><div class="t">Higashiyama fino a <b>Kiyomizu-dera</b></div></div>
+    <div class="testa"><span class="anello">3</span><div><b>domenica 3 gennaio</b><span>Kyoto, Fushimi e Higashiyama</span></div></div>
+    <div class="momenti">
+      <div class="momento"><time>07:30</time><div><b>Fushimi Inari</b>, prima delle nove</div></div>
+      <div class="momento"><time>11:45</time><div><b>Ginkaku-ji</b>, chiude alle 16:30</div></div>
+      <div class="momento"><time>13:00</time><div>Higashiyama fino a <b>Kiyomizu-dera</b></div></div>
     </div>
-  </div>
+    </div>
+  </article>
 
-  <div class="giorno g-kyoto">
-    <div class="d"><b>lun 4 gen</b><span>Kyoto</span></div>
+  <article class="giorno g-kyoto">
+    <img src="foto/arashiyama.jpg" alt="" loading="lazy">
     <div>
-      <div class="m"><div class="h">07:40</div><div class="t"><b>Bambuseto di Arashiyama</b>, l'unica ora in cui &egrave; vuoto</div></div>
-      <div class="m"><div class="h">08:40</div><div class="t">Tenryu-ji, che apre alle 8:30 (la Sala del Drago il luned&igrave; &egrave; chiusa)</div></div>
-      <div class="m"><div class="h">11:45</div><div class="t"><b>Kinkaku-ji</b>, poi il centro di Kyoto</div></div>
-      <div class="m"><div class="h"></div><div class="t">Riserva: Kurama e Kibune al posto di Arashiyama, se la neve lo permette</div></div>
+    <div class="testa"><span class="anello">4</span><div><b>luned&igrave; 4 gennaio</b><span>Kyoto, Arashiyama</span></div></div>
+    <div class="momenti">
+      <div class="momento"><time>07:40</time><div><b>Bambuseto</b>, l'unica ora in cui &egrave; vuoto</div></div>
+      <div class="momento"><time>08:40</time><div><b>Tenryu-ji</b> (la Sala del Drago il luned&igrave; &egrave; chiusa)</div></div>
+      <div class="momento"><time>11:45</time><div><b>Kinkaku-ji</b>, poi il centro</div></div>
+      <div class="momento nota"><div>Riserva: Kurama e Kibune al posto di Arashiyama, se la neve lo permette.</div></div>
     </div>
-  </div>
+    </div>
+  </article>
 
-  <div class="giorno g-kyoto">
-    <div class="d"><b>mar 5 gen</b><span>Nara</span></div>
+  <article class="giorno g-kyoto">
+    <img src="foto/nara.jpg" alt="" loading="lazy">
     <div>
-      <div class="m"><div class="h">08:00</div><div class="t"><b>Valigie grandi al banco Yamato di Kyoto Station</b>, consegna fissata per il 7 all'hotel di Osaka. Da qui si resta con lo zaino</div></div>
-      <div class="m"><div class="h">09:10</div><div class="t"><b>Todai-ji</b>, i cervi, Kasuga Taisha dall'esterno (l'area interna &egrave; chiusa fino al 7) e la foresta</div></div>
-      <div class="m"><div class="h">12:30</div><div class="t">Pranzo di tonno da <b>Maguro Koya</b>, senza prenotazione</div></div>
-      <div class="m"><div class="h">16:30</div><div class="t">Rientro a Kyoto</div></div>
-      <div class="m"><div class="h">18:00</div><div class="t"><b>Muromachi Kaji</b>, turni alle 18:00 e alle 20:30, da prenotare</div></div>
+    <div class="testa"><span class="anello">5</span><div><b>marted&igrave; 5 gennaio</b><span>Nara</span></div></div>
+    <div class="momenti">
+      <div class="momento"><time>08:00</time><div><b>Valigie grandi</b> al banco Yamato di Kyoto Station, consegna all'hotel di Osaka il 7</div></div>
+      <div class="momento"><time>09:10</time><div><b>Todai-ji</b>, i cervi, Kasuga Taisha dall'esterno</div></div>
+      <div class="momento"><time>12:30</time><div><b>Maguro Koya</b>, pranzo di tonno</div></div>
+      <div class="momento"><time>16:30</time><div>Rientro a Kyoto</div></div>
+      <div class="momento"><time>18:00</time><div><b>Muromachi Kaji</b>, da prenotare</div></div>
     </div>
-  </div>
+    </div>
+  </article>
 
-  <div class="giorno g-koya">
-    <div class="d"><b>mer 6 gen</b><span>Monte Koya</span><em>sveglia 5:30</em></div>
+  <article class="giorno g-koya">
+    <img src="foto/okunoin.jpg" alt="" loading="lazy">
     <div>
-      <div class="m"><div class="h">06:18</div><div class="t">JR da Kyoto, Namba alle 7:17; <b>Rinkan delle 7:35</b> (espresso con supplemento), Gokurakubashi 9:02, funicolare 9:09</div></div>
-      <div class="m"><div class="h">09:35</div><div class="t"><b>Koyasan</b>, centro: Danjo Garan e Kongobu-ji</div></div>
-      <div class="m"><div class="h">13:00</div><div class="t">Okunoin di giorno, due chilometri di cedri</div></div>
-      <div class="m"><div class="h">16:30</div><div class="t">Check-in al <b>Soujiin</b>: entro le 17, altrimenti la cena salta</div></div>
-      <div class="m"><div class="h">19:00</div><div class="t"><b>Okunoin di notte</b>: il viale con le lanterne di pietra (la Sala delle lanterne chiude alle 17). Il cancello del tempio chiude di notte</div></div>
+    <div class="testa"><span class="anello">6</span><div><b>mercoled&igrave; 6 gennaio</b><span>Monte Koya</span></div></div>
+    <div class="momenti">
+      <div class="momento"><time>06:18</time><div>JR da Kyoto, Namba 7:17, <b>Rinkan delle 7:35</b>, funicolare 9:09</div></div>
+      <div class="momento"><time>09:35</time><div><b>Danjo Garan e Kongobu-ji</b></div></div>
+      <div class="momento"><time>13:00</time><div><b>Okunoin</b> di giorno</div></div>
+      <div class="momento"><time>16:30</time><div>Check-in al <b>Soujiin</b>, entro le 17 o la cena salta</div></div>
+      <div class="momento"><time>19:00</time><div><b>Okunoin di notte</b>, il viale con le lanterne</div></div>
     </div>
-  </div>
+    </div>
+  </article>
 
-  <div class="giorno g-osaka">
-    <div class="d"><b>gio 7 gen</b><span>Koyasan &rarr;<br>Osaka</span><em>cerimonia all'alba</em></div>
+  <article class="giorno g-osaka">
+    <img src="foto/dotonbori.jpg" alt="" loading="lazy">
     <div>
-      <div class="m"><div class="h">06:00</div><div class="t"><b>Cerimonia coi monaci</b> (orario da confermare), colazione 7:30</div></div>
-      <div class="m"><div class="h">08:35</div><div class="t">Funicolare e discesa, Namba alle 10:29</div></div>
-      <div class="m"><div class="h">10:45</div><div class="t"><b>Namba</b>: zaini in deposito all'APA, la camera &egrave; dalle 15</div></div>
-      <div class="m"><div class="h">11:30</div><div class="t">Den Den Town</div></div>
-      <div class="m"><div class="h">16:40</div><div class="t">Umeda Sky, tramonto alle 17:03</div></div>
-      <div class="m"><div class="h">19:00</div><div class="t"><b>Bifteck Kawamura</b> a Kitashinchi, da prenotare; poi <b>Dotonbori</b></div></div>
+    <div class="testa"><span class="anello">7</span><div><b>gioved&igrave; 7 gennaio</b><span>Koyasan, Osaka</span></div></div>
+    <div class="momenti">
+      <div class="momento"><time>06:00</time><div><b>Cerimonia coi monaci</b>, colazione alle 7:30</div></div>
+      <div class="momento"><time>08:35</time><div>Funicolare e discesa, Namba alle 10:29</div></div>
+      <div class="momento"><time>10:45</time><div>Zaini all'<b>APA</b>, camera dalle 15</div></div>
+      <div class="momento"><time>11:30</time><div><b>Den Den Town</b></div></div>
+      <div class="momento"><time>16:40</time><div><b>Umeda Sky</b>, tramonto alle 17:03</div></div>
+      <div class="momento"><time>19:00</time><div><b>Bifteck Kawamura</b>, da prenotare; poi <b>Dotonbori</b></div></div>
     </div>
-  </div>
+    </div>
+  </article>
 
-  <div class="giorno g-osaka">
-    <div class="d"><b>ven 8 gen</b><span>Osaka &rarr;<br>rientro</span></div>
+  <article class="giorno g-osaka">
+    <img src="foto/himeji.jpg" alt="" loading="lazy">
     <div>
-      <div class="m"><div class="h">08:15</div><div class="t"><b>Himeji</b> in Shinkansen da Shin-Osaka, il castello apre alle 9, ultimo ingresso alle 16</div></div>
-      <div class="m"><div class="h">13:15</div><div class="t">Shinsekai; la Tsutenkaku (1.500 &yen;) vuole l'orario prenotato</div></div>
-      <div class="m"><div class="h">17:05</div><div class="t">Valigie riprese in camera, metro per Shin-Osaka</div></div>
-      <div class="m"><div class="h">18:06</div><div class="t"><b>Nozomi 44 per Tokyo</b>, Shinagawa 20:25, Haneda T3 per le 20:45</div></div>
-      <div class="m"><div class="h">00:05</div><div class="t">Decollo</div></div>
+    <div class="testa"><span class="anello">8</span><div><b>venerd&igrave; 8 gennaio</b><span>Himeji, Osaka, rientro</span></div></div>
+    <div class="momenti">
+      <div class="momento"><time>08:15</time><div><b>Himeji</b> in Shinkansen, il castello apre alle 9</div></div>
+      <div class="momento"><time>13:15</time><div><b>Shinsekai</b>; Tsutenkaku con orario prenotato</div></div>
+      <div class="momento"><time>17:05</time><div>Valigie dalla camera, metro per Shin-Osaka</div></div>
+      <div class="momento"><time>18:06</time><div><b>Nozomi 44</b>, Shinagawa 20:25, Haneda per le 20:45</div></div>
+      <div class="momento"><time>00:05</time><div><b>Decollo</b></div></div>
     </div>
-  </div>
-
-  <div class="giorno g-viaggio">
-    <div class="d"><b>sab 9 gen</b><span>In volo</span></div>
-    <div>
-      <div class="m"><div class="h">06:55</div><div class="t">Scalo a Dubai, due ore</div></div>
-      <div class="m"><div class="h">12:40</div><div class="t"><b>Roma Fiumicino</b></div></div>
-      <div class="m"><div class="h">17:11</div><div class="t">Roma Termini, <b>FR 8343</b> per Napoli Centrale (18:23), Carlo e Maurizio</div></div>
     </div>
-  </div>
+  </article>
 
-  <div class="tempi"><b>Riserve</b><div>Gli orari dei treni giapponesi sono quelli in vigore a ottobre 2026: quelli di fine anno escono a novembre e vanno riletti. La gita al Fuji vive del cielo: gennaio &egrave; il mese pi&ugrave; limpido dell'anno, ma se l'1 &egrave; coperto si resta in citt&agrave;. Kurama e Kibune dipendono dalla neve e non stanno in un pomeriggio: prenderebbero la mattina del 4 al posto di Arashiyama. Tsukiji va fatto il 30: il 31 molti banchi chiudono o riducono l'orario, dall'1 al 4 l'ingrosso &egrave; chiuso. Il 2, il 6 e il 7 si parte all'alba: &egrave; il prezzo per avere Kyoto, il monte e Osaka come giornate piene.</div></div>
+  <article class="giorno g-viaggio">
+    <div class="testa"><span class="anello">9</span><div><b>sabato 9 gennaio</b><span>In volo, Roma, Napoli</span></div></div>
+    <div class="momenti">
+      <div class="momento"><time>06:55</time><div>Dubai, due ore di scalo</div></div>
+      <div class="momento"><time>12:40</time><div><b>Fiumicino</b></div></div>
+      <div class="momento"><time>17:11</time><div><b>FR 8343</b> da Termini, Napoli alle 18:23</div></div>
+    </div>
+  </article>
 </section>
 
 <!-- ============ TAPPE ============ -->
 <section id="tappe">
 
-  <div class="tappa t-tokyo">
-    <div class="fascia"><h3>Tokyo</h3><div class="quando">29 dic &ndash; 1 gen<br>4 giornate</div></div>
-    <p class="avviso">Dal 29 dicembre al 3 gennaio musei e giardini a pagamento sono quasi tutti chiusi: in questa lista non ce ne sono. Templi, quartieri e negozi restano aperti. L'1 gennaio, mentre la citt&agrave; si ferma per il Capodanno, si va al Fuji.</p>
-    <div class="alloggio"><div class="foto"><img src="foto/hotel-tokyo.jpg" alt="" loading="lazy"></div><div class="dati"><div class="et">Dove dormiamo</div>
+  <div class="fascia t-tokyo"><h3>Tokyo</h3><div>29 dic &ndash; 1 gen<br>4 giornate</div></div>
+  <div class="card foto hotel">
+    <img src="foto/hotel-tokyo.jpg" alt="" loading="lazy">
+    <div class="corpo">
       <h4>The Edo Sakura</h4>
-      <div class="posto">Taito-ku, Shitaya 3-2-13: quattro minuti da Iriya sulla Hibiya, dieci da Uguisudani (JR)</div>
-      <div class="numeri"><span><b>9,0</b>1.941 recensioni</span><span><b>3</b>stelle</span><span><b>15-23</b>arrivo</span><span><b>7-11</b>partenza</span></div>
-      <p>Reception aperta dalle 7 alle 23, deposito bagagli. Per partire alle 5:30 del 2 il check-out va concordato la sera prima.</p>
-    </div></div>
-    <div class="sep">Cosa vedere</div>
-    <div class="mete">
-      <div class="meta"><div class="foto"><img src="foto/akihabara.jpg" alt="" loading="lazy"></div><div class="capo"><div class="ti">Akihabara</div><div class="du">mezza giornata</div></div><p>Super Potato, Radio Kaikan, Mandarake, le sale giochi GiGO e Yodobashi Akiba.</p></div>
-      <div class="meta"><div class="foto"><img src="foto/nakano.jpg" alt="" loading="lazy"></div><div class="capo"><div class="ti">Nakano Broadway</div><div class="du">2-3 ore</div></div><p>Piani interi di Mandarake, usato e da collezione, molto meno turistico di Akihabara.</p></div>
-      <div class="meta"><div class="foto"><img src="foto/ikebukuro.jpg" alt="" loading="lazy"></div><div class="capo"><div class="ti">Ikebukuro</div><div class="du">2-3 ore</div></div><p>Animate, la Otome Road e il Pok&eacute;mon Center pi&ugrave; grande della citt&agrave;.<span class="v">il Pok&eacute;mon Center ha riaperto ad agosto con ingressi contingentati</span></p></div>
-      <div class="meta"><div class="foto"><img src="foto/sensoji.jpg" alt="" loading="lazy"></div><div class="capo"><div class="ti">Senso-ji</div><div class="du">2-3 ore</div></div><p>Il tempio pi&ugrave; antico di Tokyo, con la Nakamise-dori e il quartiere di Asakusa intorno. Sala principale aperta dalle 6:30 alle 17.</p></div>
-      <div class="meta"><div class="foto"><img src="foto/meiji.jpg" alt="" loading="lazy"></div><div class="capo"><div class="ti">Meiji Jingu</div><div class="du">2 ore</div></div><p>Santuario dentro la foresta.<span class="v">dal 1 gennaio &egrave; la meta dell'hatsumode, code di ore</span></p></div>
-      <div class="meta"><div class="foto"><img src="foto/harajuku.jpg" alt="" loading="lazy"></div><div class="capo"><div class="ti">Harajuku e Cat Street</div><div class="du">2 ore</div></div><p>Takeshita Street e le sue vetrine, poi la via pedonale sul vecchio fiume fra Harajuku e Shibuya: streetwear, usato, negozi piccoli.<span class="v">i negozi piccoli l'1 sono chiusi: la finestra &egrave; il pomeriggio del 30</span></p></div>
-      <div class="meta"><div class="foto"><img src="foto/shibuya.jpg" alt="" loading="lazy"></div><div class="capo"><div class="ti">Shibuya</div><div class="du">mezza giornata</div></div><p>L'incrocio, poi Nintendo Tokyo, Pok&eacute;mon Center e Capcom Store dentro Parco.<span class="v">Parco l'1 e il 2 gennaio &egrave; chiuso</span></p></div>
-      <div class="meta"><div class="foto"><img src="foto/shibuyasky.jpg" alt="" loading="lazy"></div><div class="capo"><div class="ti">Shibuya Sky</div><div class="du">1 ora</div></div><p>La terrazza aperta sul tetto dello Scramble Square.<span class="v">biglietto a slot orario; l'1 gennaio chiude al pubblico: si va il 31</span></p></div>
-      <div class="meta"><div class="foto"><img src="foto/shinjuku.jpg" alt="" loading="lazy"></div><div class="capo"><div class="ti">Shinjuku di notte</div><div class="du">una serata</div></div><p>Kabukicho con le sue insegne, i vicoli di Omoide Yokocho e i bar minuscoli di Golden Gai.</p></div>
-      <div class="meta"><div class="foto"><img src="foto/tsukiji.jpg" alt="" loading="lazy"></div><div class="capo"><div class="ti">Mercato di Tsukiji</div><div class="du">una mattina</div></div><p>Banchi di pesce, sushi e spiedini da mangiare in piedi, aperti dall'alba: &egrave; il mercato esterno rimasto dopo il trasloco dell'ingrosso a Toyosu.<span class="v">si va presto; il 29 e il 30 sono i giorni pi&ugrave; pieni dell'anno, il 31 molti chiudono</span></p></div>
-      <div class="meta"><div class="foto"><img src="foto/fuji.jpg" alt="" loading="lazy"></div><div class="capo"><div class="ti">Pagoda Chureito e lago Kawaguchi</div><div class="du">giornata intera</div></div><p>La terrazza della pagoda sopra Fujiyoshida col vulcano davanti, l'hatsumode al santuario Sengen ai suoi piedi e la riva del lago. Meno di due ore di treno diretto da Shinjuku.<span class="v">posti riservati, in vendita dal 24 novembre; treno andata e ritorno 48,97 &euro; a persona</span></p></div>
+      <div class="dove">Taito-ku, Shitaya 3-2-13. Quattro minuti da Iriya (Hibiya), dieci da Uguisudani (JR).</div>
+      <div class="fatti">
+        <div><b>9,0</b><span>1.941 recensioni</span></div>
+        <div><b>3</b><span>stelle</span></div>
+        <div><b>15 &ndash; 23</b><span>arrivo</span></div>
+        <div><b>7 &ndash; 23</b><span>reception</span></div>
+      </div>
+      <p class="avviso"><b>Per uscire alle 5:30 del 2</b> il check-out si concorda la sera prima. Deposito bagagli alla reception.</p>
     </div>
-    <div class="tempi"><b>Tempi</b><div>Tre giornate in citt&agrave; e una fuori. Il mercato va fatto presto e lascia libero il resto del giorno. Shibuya Sky sta nel tramonto del 31, fra Akihabara e i rintocchi. L'1 &egrave; la gita al Fuji: se il cielo &egrave; coperto si rovescia il piano e si resta in citt&agrave;. Le serate coprono Shinjuku e Shibuya.</div></div>
   </div>
+  <div class="luoghi">
+    <div class="luogo"><img src="foto/akihabara.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Akihabara</h4><span class="durata">mezza giornata</span></div><p>Super Potato, Radio Kaikan, Mandarake, GiGO, Yodobashi.</p></div></div>
+    <div class="luogo"><img src="foto/nakano.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Nakano Broadway</h4><span class="durata">2-3 ore</span></div><p>Piani interi di Mandarake, usato e da collezione.</p></div></div>
+    <div class="luogo"><img src="foto/ikebukuro.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Ikebukuro</h4><span class="durata">2-3 ore</span></div><p>Animate, Otome Road, il Pok&eacute;mon Center pi&ugrave; grande della citt&agrave;.<span class="v">Pok&eacute;mon Center a ingressi contingentati</span></p></div></div>
+    <div class="luogo"><img src="foto/sensoji.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Senso-ji</h4><span class="durata">2-3 ore</span></div><p>Il tempio pi&ugrave; antico di Tokyo, la Nakamise, Asakusa. Sala principale dalle 6:30 alle 17.</p></div></div>
+    <div class="luogo"><img src="foto/meiji.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Meiji Jingu</h4><span class="durata">2 ore</span></div><p>Santuario dentro la foresta.<span class="v">dall'1 gennaio code di ore per l'hatsumode</span></p></div></div>
+    <div class="luogo"><img src="foto/harajuku.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Harajuku e Cat Street</h4><span class="durata">2 ore</span></div><p>Takeshita Street, poi la via pedonale verso Shibuya: streetwear, usato, negozi piccoli.<span class="v">la finestra &egrave; il pomeriggio del 30</span></p></div></div>
+    <div class="luogo"><img src="foto/shibuya.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Shibuya</h4><span class="durata">mezza giornata</span></div><p>L'incrocio, poi Nintendo Tokyo, Pok&eacute;mon Center e Capcom Store dentro Parco.<span class="v">Parco chiuso l'1 e il 2 gennaio</span></p></div></div>
+    <div class="luogo"><img src="foto/shibuyasky.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Shibuya Sky</h4><span class="durata">1 ora</span></div><p>La terrazza sul tetto dello Scramble Square.<span class="v">slot delle 16:20 del 31; l'1 chiude al pubblico</span></p></div></div>
+    <div class="luogo"><img src="foto/shinjuku.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Shinjuku di notte</h4><span class="durata">una serata</span></div><p>Kabukicho, i vicoli di Omoide Yokocho, i bar di Golden Gai.</p></div></div>
+    <div class="luogo"><img src="foto/tsukiji.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Mercato di Tsukiji</h4><span class="durata">una mattina</span></div><p>Banchi di pesce, sushi e spiedini in piedi dall'alba.<span class="v">il 29 e il 30 sono i giorni pi&ugrave; pieni; il 31 molti chiudono</span></p></div></div>
+    <div class="luogo"><img src="foto/fuji.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Chureito e lago Kawaguchi</h4><span class="durata">giornata intera</span></div><p>La pagoda sopra Fujiyoshida col vulcano davanti, il santuario Sengen, la riva del lago.<span class="v">treno andata e ritorno 48,97 &euro;, in vendita dal 24 novembre</span></p></div></div>
+  </div>
+  <p class="tempi"><b>Tre giornate in citt&agrave; e una fuori.</b> Dal 29 dicembre al 3 gennaio musei e giardini a pagamento sono chiusi: qui non ce ne sono.</p>
 
-  <div class="tappa t-kyoto">
-    <div class="fascia"><h3>Kyoto</h3><div class="quando">2 &ndash; 5 gen<br>4 giornate</div></div>
-    <div class="alloggio"><div class="foto"><img src="foto/hotel-kyoto.jpg" alt="" loading="lazy"></div><div class="dati"><div class="et">Dove dormiamo</div>
+  <div class="fascia t-kyoto"><h3>Kyoto</h3><div>2 &ndash; 5 gen<br>4 giornate</div></div>
+  <div class="card foto hotel">
+    <img src="foto/hotel-kyoto.jpg" alt="" loading="lazy">
+    <div class="corpo">
       <h4>Oyado Kyoto Shinmachi</h4>
-      <div class="posto">Shimogyo-ku, Mikage-cho 462-3, su Shinmachi-dori: 700 metri dalla metro Karasuma, quindici minuti a piedi da Shijo e dal Nishiki</div>
-      <div class="numeri"><span><b>8,6</b>476 recensioni</span><span><b>4</b>su 5, voto qualit&agrave;</span><span><b>16-22</b>arrivo</span><span><b>10:00</b>partenza</span></div>
-      <p><b>Struttura automatizzata, senza personale</b>: self check-in con orario di arrivo da comunicare prima, silenzio dalle 21 alle 8, nessun deposito bagagli. Il 2 le valigie restano a Kyoto Station fino alle 16; il 5 il takkyubin parte dal banco Yamato della stazione.</p>
-    </div></div>
-    <div class="sep">Cosa vedere</div>
-    <div class="mete">
-      <div class="meta"><div class="foto"><img src="foto/fushimi.jpg" alt="" loading="lazy"></div><div class="capo"><div class="ti">Fushimi Inari</div><div class="du">mezza giornata</div></div><p>I diecimila torii, sempre aperto. La salita fino alla cima aggiunge un'ora e mezza di bosco.</p></div>
-      <div class="meta"><div class="foto"><img src="foto/arashiyama.jpg" alt="" loading="lazy"></div><div class="capo"><div class="ti">Arashiyama</div><div class="du">mezza giornata</div></div><p>Il bambuseto, il tempio Tenryu-ji e le scimmie di Iwatayama sulla collina.</p></div>
-      <div class="meta"><div class="foto"><img src="foto/kiyomizu.jpg" alt="" loading="lazy"></div><div class="capo"><div class="ti">Kiyomizu-dera</div><div class="du">mezza giornata</div></div><p>Il palco sospeso sulla valle, e la discesa per Sannenzaka e Ninenzaka. Aperto 6-18.</p></div>
-      <div class="meta"><div class="foto"><img src="foto/kinkakuji.jpg" alt="" loading="lazy"></div><div class="capo"><div class="ti">Kinkaku-ji</div><div class="du">1 ora</div></div><p>Il Padiglione d'Oro sullo stagno. Visita breve e obbligata, 9-17.</p></div>
-      <div class="meta"><div class="foto"><img src="foto/ginkakuji.jpg" alt="" loading="lazy"></div><div class="capo"><div class="ti">Ginkaku-ji</div><div class="du">1-2 ore</div></div><p>Il Padiglione d'Argento, il giardino di sabbia e il sentiero che sale sopra il muschio. D'inverno chiude alle 16:30.</p></div>
-      <div class="meta"><div class="foto"><img src="foto/gion.jpg" alt="" loading="lazy"></div><div class="capo"><div class="ti">Gion</div><div class="du">una serata</div></div><p>Le case di legno di Hanamikoji e il vicolo di Pontocho lungo il fiume.</p></div>
-      <div class="meta"><div class="foto"><img src="foto/kurama.jpg" alt="" loading="lazy"></div><div class="capo"><div class="ti">Kurama e Kibune</div><div class="du">mezza giornata</div></div><p>Trekking di due ore tra due villaggi di montagna sopra Kyoto.<span class="v">con neve o ghiaccio il sentiero si complica; treno andata e ritorno 5,31 &euro;</span></p></div>
-      <div class="meta"><div class="foto"><img src="foto/nara.jpg" alt="" loading="lazy"></div><div class="capo"><div class="ti">Nara</div><div class="du">giornata intera</div></div><p>Todai-ji e il Grande Buddha, i cervi del parco, Kasuga Taisha e la foresta dietro. Tre quarti d'ora di treno.<span class="v">treno andata e ritorno 8,58 &euro;; l'area interna del Kasuga &egrave; chiusa fino al 7</span></p></div>
+      <div class="dove">Shimogyo-ku, Mikage-cho 462-3. Quindici minuti a piedi da Shijo e dal Nishiki, 700 metri dalla metro Karasuma.</div>
+      <div class="fatti">
+        <div><b>8,6</b><span>476 recensioni</span></div>
+        <div><b>16 &ndash; 22</b><span>arrivo, da comunicare prima</span></div>
+        <div><b>10:00</b><span>partenza</span></div>
+        <div><b>21 &ndash; 8</b><span>silenzio</span></div>
+      </div>
+      <p class="avviso"><b>Senza personale</b>: self check-in, nessun deposito bagagli. Il 2 le valigie restano in stazione fino alle 16; il 5 il takkyubin parte dal banco Yamato di Kyoto Station.</p>
     </div>
-    <div class="tempi"><b>Tempi</b><div>Si arriva alle 8:08 del 2 gennaio, quindi le giornate piene sono quattro. Nara ne occupa una e Fushimi Inari conviene all'alba. Kurama e Kibune non stanno in un pomeriggio, perch&eacute; sono due ore di sentiero e alle 17 &egrave; buio: prenderebbero la mattina del 4, al posto di Arashiyama e Kinkaku-ji.</div></div>
   </div>
+  <div class="luoghi">
+    <div class="luogo"><img src="foto/fushimi.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Fushimi Inari</h4><span class="durata">mezza giornata</span></div><p>I diecimila torii, sempre aperto. Fino alla cima un'ora e mezza in pi&ugrave;.</p></div></div>
+    <div class="luogo"><img src="foto/arashiyama.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Arashiyama</h4><span class="durata">mezza giornata</span></div><p>Il bambuseto, Tenryu-ji, le scimmie di Iwatayama.</p></div></div>
+    <div class="luogo"><img src="foto/kiyomizu.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Kiyomizu-dera</h4><span class="durata">mezza giornata</span></div><p>Il palco sulla valle e la discesa per Sannenzaka e Ninenzaka. Aperto 6-18.</p></div></div>
+    <div class="luogo"><img src="foto/kinkakuji.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Kinkaku-ji</h4><span class="durata">1 ora</span></div><p>Il Padiglione d'Oro sullo stagno, 9-17.</p></div></div>
+    <div class="luogo"><img src="foto/ginkakuji.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Ginkaku-ji</h4><span class="durata">1-2 ore</span></div><p>Il Padiglione d'Argento e il giardino di sabbia. D'inverno chiude alle 16:30.</p></div></div>
+    <div class="luogo"><img src="foto/gion.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Gion</h4><span class="durata">una serata</span></div><p>Le case di legno di Hanamikoji e il vicolo di Pontocho sul fiume.</p></div></div>
+    <div class="luogo"><img src="foto/kurama.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Kurama e Kibune</h4><span class="durata">mezza giornata</span></div><p>Due ore di sentiero fra due villaggi di montagna.<span class="v">riserva: con neve o ghiaccio si complica</span></p></div></div>
+    <div class="luogo"><img src="foto/nara.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Nara</h4><span class="durata">giornata intera</span></div><p>Todai-ji e il Grande Buddha, i cervi, Kasuga Taisha. Tre quarti d'ora di treno.<span class="v">l'area interna del Kasuga &egrave; chiusa fino al 7</span></p></div></div>
+  </div>
+  <p class="tempi"><b>Quattro giornate piene.</b> Nara ne occupa una, Fushimi Inari conviene all'alba.</p>
 
-  <div class="tappa t-koya">
-    <div class="fascia"><h3>Monte Koya</h3><div class="quando">6 gen<br>giornata e notte</div></div>
-    <div class="alloggio"><div class="foto"><img src="foto/hotel-koya.jpg" alt="" loading="lazy"></div><div class="dati"><div class="et">Dove dormiamo</div>
+  <div class="fascia t-koya"><h3>Monte Koya</h3><div>6 gen<br>giornata e notte</div></div>
+  <div class="card foto hotel">
+    <img src="foto/hotel-koya.jpg" alt="" loading="lazy">
+    <div class="corpo">
       <h4>Shukubo Soujiin</h4>
-      <div class="posto">Alloggio nel tempio, a 350 metri dal centro del monte</div>
-      <div class="numeri"><span><b>9,1</b>circa 850 recensioni</span><span><b>15-17</b>arrivo</span><span><b>8-10</b>partenza</span><span><b>7:30</b>colazione</span></div>
-      <p>Si arriva <b>entro le 17</b>, altrimenti la cena non viene servita; richieste sui pasti entro le 13. Cancello chiuso di notte. Bagno in comune salvo le suite. Contanti e carte. A gennaio la media &egrave; sotto zero: la minima tipica &egrave; -4&nbsp;&deg;C.</p>
-    </div></div>
-    <div class="sep">Cosa vedere</div>
-    <div class="mete">
-      <div class="meta"><div class="foto"><img src="foto/danjo.jpg" alt="" loading="lazy"></div><div class="capo"><div class="ti">Danjo Garan</div><div class="du">2 ore</div></div><p>Il cuore del complesso monastico, con la pagoda vermiglia e Kongobu-ji accanto. Biglietto combinato 2.500 &yen;.</p></div>
-      <div class="meta"><div class="foto"><img src="foto/okunoin.jpg" alt="" loading="lazy"></div><div class="capo"><div class="ti">Okunoin</div><div class="du">due volte</div></div><p>Due chilometri di cedri secolari e lanterne fino al mausoleo di Kobo Daishi: con la luce e, dopo cena, con le lanterne. La Sala delle lanterne &egrave; aperta 6-17, il viale sempre.</p></div>
+      <div class="dove">Alloggio nel tempio, a 350 metri dal centro del monte.</div>
+      <div class="fatti">
+        <div><b>9,1</b><span>circa 850 recensioni</span></div>
+        <div><b>15 &ndash; 17</b><span>arrivo, entro le 17 per la cena</span></div>
+        <div><b>7:30</b><span>colazione</span></div>
+        <div><b>-4 &deg;C</b><span>minima tipica di gennaio</span></div>
+      </div>
+      <p class="avviso">Cena e colazione nel tempio, cancello chiuso di notte, bagno in comune salvo le suite. Contanti e carte.</p>
     </div>
-    <div class="tempi"><b>Tempi</b><div>Partendo da Kyoto alle 6:18 si &egrave; al centro del monte verso le 9:35, e il Koyasan diventa una giornata intera invece di un pomeriggio. La cerimonia del mattino del giorno dopo &egrave; compresa nel soggiorno; la funicolare delle 8:35 porta a Namba alle 10:29.</div></div>
   </div>
+  <div class="luoghi">
+    <div class="luogo"><img src="foto/danjo.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Danjo Garan</h4><span class="durata">2 ore</span></div><p>Il cuore del complesso, la pagoda vermiglia, Kongobu-ji accanto. Biglietto combinato 2.500 &yen;.</p></div></div>
+    <div class="luogo"><img src="foto/okunoin.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Okunoin</h4><span class="durata">due volte</span></div><p>Due chilometri di cedri e lanterne fino al mausoleo di Kobo Daishi: con la luce e dopo cena.<span class="v">il viale &egrave; sempre aperto, la Sala delle lanterne chiude alle 17</span></p></div></div>
+  </div>
+  <p class="tempi"><b>Una giornata intera sul monte</b> partendo da Kyoto alle 6:18. La cerimonia del mattino &egrave; compresa.</p>
 
-  <div class="tappa t-osaka">
-    <div class="fascia"><h3>Osaka</h3><div class="quando">7 &ndash; 8 gen<br>2 notti</div></div>
-    <div class="alloggio"><div class="foto"><img src="foto/hotel-osaka.jpg" alt="" loading="lazy"></div><div class="dati"><div class="et">Dove dormiamo</div>
+  <div class="fascia t-osaka"><h3>Osaka</h3><div>7 &ndash; 8 gen<br>2 notti</div></div>
+  <div class="card foto hotel">
+    <img src="foto/hotel-osaka.jpg" alt="" loading="lazy">
+    <div class="corpo">
       <h4>APA Hotel &amp; Resort Osaka Namba Ekimae Tower</h4>
-      <div class="posto">Minatomachi 1-2-13: un minuto da JR Namba, cinque dalla metro Midosuji e dalla Nankai</div>
-      <div class="numeri"><span><b>8,4</b>su Booking</span><span><b>3</b>stelle</span><span><b>15:00</b>arrivo</span><span><b>16</b>minuti da Shin-Osaka</span></div>
-      <p>La camera &egrave; presa anche per la notte dell'8: il check-out non c'&egrave;, le valigie restano in camera fino alle 17. La valigia spedita da Kyoto arriva il 7.</p>
-    </div></div>
-    <div class="sep">Cosa vedere</div>
-    <div class="mete">
-      <div class="meta"><div class="foto"><img src="foto/denden.jpg" alt="" loading="lazy"></div><div class="capo"><div class="ti">Den Den Town</div><div class="du">mezza giornata</div></div><p>Super Potato, Mandarake, Surugaya e Animate. Sull'usato i prezzi sono pi&ugrave; bassi che a Tokyo.</p></div>
-      <div class="meta"><div class="foto"><img src="foto/dotonbori.jpg" alt="" loading="lazy"></div><div class="capo"><div class="ti">Dotonbori</div><div class="du">una serata</div></div><p>I neon e le insegne sul canale, il cuore notturno della citt&agrave;.</p></div>
-      <div class="meta"><div class="foto"><img src="foto/shinsekai.jpg" alt="" loading="lazy"></div><div class="capo"><div class="ti">Shinsekai</div><div class="du">2 ore</div></div><p>Il quartiere retr&ograve; ai piedi della torre Tsutenkaku, rimasto agli anni Sessanta.<span class="v">Tsutenkaku 1.500 &yen;, orario d'ingresso da prenotare</span></p></div>
-      <div class="meta"><div class="foto"><img src="foto/umeda.jpg" alt="" loading="lazy"></div><div class="capo"><div class="ti">Umeda Sky Building</div><div class="du">1-2 ore</div></div><p>L'osservatorio sospeso tra le due torri, 9:30-22:30. Va fatto la sera del 7, al tramonto: l'8 si &egrave; gi&agrave; sul treno.</p></div>
-      <div class="meta"><div class="foto"><img src="foto/himeji.jpg" alt="" loading="lazy"></div><div class="capo"><div class="ti">Himeji</div><div class="du">mezza giornata</div></div><p>Il castello meglio conservato del paese, mai ricostruito. Mezz'ora di Shinkansen da Shin-Osaka, aperto 9-17.<span class="v">andata e ritorno 43,71 &euro;; si esce da Namba alle otto e si rientra per pranzo</span></p></div>
+      <div class="dove">Minatomachi 1-2-13. Un minuto da JR Namba, cinque dalla Midosuji e dalla Nankai.</div>
+      <div class="fatti">
+        <div><b>8,4</b><span>su Booking</span></div>
+        <div><b>15:00</b><span>arrivo</span></div>
+        <div><b>2 notti</b><span>la seconda per le valigie</span></div>
+        <div><b>16 min</b><span>di metro da Shin-Osaka</span></div>
+      </div>
+      <p class="avviso">La valigia spedita da Kyoto arriva il 7. L'8 nessun check-out: le valigie restano in camera fino alle 17.</p>
     </div>
-    <div class="tempi"><b>Tempi</b><div>Una notte dormita e due mezze giornate: il 7 si scende dal monte in mattinata, l'8 si riparte alle 17. Himeji ci sta solo nella mattina dell'8, ed &egrave; la voce da tagliare se si preferisce non correre.</div></div>
   </div>
+  <div class="luoghi">
+    <div class="luogo"><img src="foto/denden.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Den Den Town</h4><span class="durata">mezza giornata</span></div><p>Super Potato, Mandarake, Surugaya, Animate. Sull'usato costa meno che a Tokyo.</p></div></div>
+    <div class="luogo"><img src="foto/dotonbori.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Dotonbori</h4><span class="durata">una serata</span></div><p>I neon sul canale.</p></div></div>
+    <div class="luogo"><img src="foto/shinsekai.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Shinsekai</h4><span class="durata">2 ore</span></div><p>Il quartiere retr&ograve; ai piedi della Tsutenkaku.<span class="v">torre 1.500 &yen;, orario da prenotare</span></p></div></div>
+    <div class="luogo"><img src="foto/umeda.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Umeda Sky Building</h4><span class="durata">1-2 ore</span></div><p>L'osservatorio fra le due torri, 9:30-22:30. La sera del 7, al tramonto.</p></div></div>
+    <div class="luogo"><img src="foto/himeji.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Himeji</h4><span class="durata">mezza giornata</span></div><p>Il castello mai ricostruito, mezz'ora di Shinkansen, 9-17.<span class="v">andata e ritorno 43,71 &euro;; la voce da tagliare se non si vuole correre</span></p></div></div>
+  </div>
+  <p class="tempi"><b>Una notte dormita e due mezze giornate.</b> Himeji ci sta solo la mattina dell'8.</p>
 </section>
 
 <!-- ============ TRASPORTI ============ -->
 <section id="trasporti">
-  <h2><span>Trasporti</span><span class="coda">tariffe ufficiali, ottobre 2026<br>177 &yen; per 1 &euro;</span></h2>
-  <p class="avviso">Nessun biglietto ancora comprato. Il Nozomi &egrave; a posti tutti riservati dal 25 dicembre al 5 gennaio: il 2 si prenota per forza. Su SmartEX si prenota gi&agrave; adesso (i posti vengono assegnati un mese prima); i rivenditori esteri costano di pi&ugrave;.</p>
-  <table>
-    <tr><th>Spostamento</th><th class="n">Yen</th><th class="n">A persona</th></tr>
-    <tr><td colspan="3" class="gruppo">In citt&agrave; e verso gli aeroporti</td></tr>
-    <tr><td>Haneda T3 &rarr; Iriya<small>29 dic, Keikyu e Asakusa fino a Ningyocho, poi Hibiya</small></td><td class="n y">650</td><td class="n">3,67 &euro;</td></tr>
-    <tr><td>Metro e treni urbani a Tokyo, 4 giorni<small>stima 1.000 &yen; al giorno</small></td><td class="n y">4.000</td><td class="n">22,59 &euro;</td></tr>
-    <tr><td>Bus e metro a Kyoto, 4 giorni<small>stima 1.000 &yen; al giorno</small></td><td class="n y">4.000</td><td class="n">22,59 &euro;</td></tr>
-    <tr><td>Metro a Osaka, due mezze giornate</td><td class="n y">2.000</td><td class="n">11,30 &euro;</td></tr>
-    <tr><td>Namba &rarr; Shin-Osaka, metro Midosuji<small>8 gen, 16 minuti</small></td><td class="n y">290</td><td class="n">1,64 &euro;</td></tr>
-    <tr><td>Keikyu da Shinagawa a Haneda<small>8 gen</small></td><td class="n y">330</td><td class="n">1,86 &euro;</td></tr>
-    <tr class="sub"><td>Subtotale</td><td class="n y">11.270</td><td class="n">63,65 &euro;</td></tr>
-    <tr><td colspan="3" class="gruppo">Da una tappa all'altra</td></tr>
-    <tr><td>Tokyo &rarr; Kyoto, Nozomi riservato<small>2 gen: 8.360 + 5.810 + 400 di picco massimo</small></td><td class="n y">14.570</td><td class="n">82,29 &euro;</td></tr>
-    <tr><td>Takkyubin, una valigia da Kyoto a Osaka<small>5 gen, taglia 160; 2.630 se taglia 140</small></td><td class="n y">3.020</td><td class="n">17,06 &euro;</td></tr>
-    <tr><td>Kyoto &rarr; Namba, JR e Midosuji<small>6 gen; pi&ugrave; circa 700 &yen; se si prende l'espresso Rinkan</small></td><td class="n y">820</td><td class="n">4,63 &euro;</td></tr>
-    <tr><td>Koyasan World Heritage Ticket<small>6-7 gen: andata e ritorno da Namba, funicolare, bus del monte, sconti sui templi; valido 2 giorni</small></td><td class="n y">4.210</td><td class="n">23,78 &euro;</td></tr>
-    <tr><td>Shin-Osaka &rarr; Shinagawa, Nozomi riservato<small>8 gen, tariffa normale, nessun supplemento</small></td><td class="n y">14.720</td><td class="n">83,14 &euro;</td></tr>
-    <tr class="sub"><td>Subtotale</td><td class="n y">37.340</td><td class="n">210,89 &euro;</td></tr>
-    <tr><td colspan="3" class="gruppo">Gite in giornata</td></tr>
-    <tr><td>Nara, Kintetsu andata e ritorno<small>760 a tratta</small></td><td class="n y">1.520</td><td class="n">8,58 &euro;</td></tr>
-    <tr><td>Kurama e Kibune, Eizan andata e ritorno<small>riserva</small></td><td class="n y">940</td><td class="n">5,31 &euro;</td></tr>
-    <tr><td>Himeji, Shinkansen riservato andata e ritorno<small>prezzo SmartEX, 8.140 allo sportello; col rapido JR 2.920 in un'ora invece di mezza</small></td><td class="n y">7.740</td><td class="n">43,71 &euro;</td></tr>
-    <tr><td>Monte Fuji, Fuji Excursion riservato<small>Shinjuku &rarr; Shimoyoshida 4.010, locali Fujikyu 460, Kawaguchiko &rarr; Shinjuku 4.200</small></td><td class="n y">8.670</td><td class="n">48,97 &euro;</td></tr>
-    <tr class="sub"><td>Subtotale</td><td class="n y">18.870</td><td class="n">106,57 &euro;</td></tr>
-    <tr class="tot"><td>Totale trasporti</td><td class="n y">67.480</td><td class="n">381,11 &euro;</td></tr>
-  </table>
-  <ul>
-    <li><b>Shinkansen</b>: supplemento di picco sui posti riservati, +400 &yen; il 29-30 dicembre e il 2-3 gennaio, +200 il 25-28, il 31 e il 4. Su SmartEX serve una carta con 3D Secure; si sale col QR o con una carta IC registrata. Scegliere il posto con spazio valigie se una supera i 160 cm di somma dei lati.</li>
-    <li><b>Fuji Excursion</b>: biglietti su Ekinet, prenotazione anticipata dal 24 novembre, vendita dal 1 dicembre. Si ritirano in una stazione JR East prima di partire (Shinjuku, Ueno), ritorno compreso: le stazioni Fujikyu non li stampano.</li>
-    <li><b>Koyasan</b>: il World Heritage Ticket si compra da un mese prima agli sportelli Nankai di Namba, anche in versione digitale (3.980 &yen;). L'avviso Nankai sulla manutenzione invernale della funicolare esce a met&agrave; novembre: l'anno scorso &egrave; stata ferma tre giorni a dicembre.</li>
-    <li>Il JR Pass nazionale (circa 50.000 &yen; per sette giorni) con queste tratte non si ripaga.</li>
-  </ul>
+  <h2>Trasporti<small>tariffe ufficiali di ottobre 2026, nessun biglietto ancora comprato</small></h2>
+  <div class="card">
+    <table>
+      <tr><th>Spostamento</th><th class="n">Yen</th><th class="n">Euro</th></tr>
+      <tr class="gruppo"><td colspan="3">In citt&agrave; e verso gli aeroporti</td></tr>
+      <tr><td>Haneda T3, Iriya<small>29 dic, Keikyu e Hibiya</small></td><td class="n y">650</td><td class="n">3,67</td></tr>
+      <tr><td>Metro e treni a Tokyo<small>4 giorni, 1.000 &yen; al giorno</small></td><td class="n y">4.000</td><td class="n">22,59</td></tr>
+      <tr><td>Bus e metro a Kyoto<small>4 giorni</small></td><td class="n y">4.000</td><td class="n">22,59</td></tr>
+      <tr><td>Metro a Osaka<small>due mezze giornate</small></td><td class="n y">2.000</td><td class="n">11,30</td></tr>
+      <tr><td>Namba, Shin-Osaka<small>8 gen, Midosuji</small></td><td class="n y">290</td><td class="n">1,64</td></tr>
+      <tr><td>Shinagawa, Haneda<small>8 gen, Keikyu</small></td><td class="n y">330</td><td class="n">1,86</td></tr>
+      <tr class="sub"><td>Subtotale</td><td class="n y">11.270</td><td class="n">63,65</td></tr>
+      <tr class="gruppo"><td colspan="3">Da una tappa all'altra</td></tr>
+      <tr><td>Tokyo, Kyoto, Nozomi<small>2 gen, con 400 &yen; di picco</small></td><td class="n y">14.570</td><td class="n">82,29</td></tr>
+      <tr><td>Takkyubin, una valigia<small>5 gen, Kyoto a Osaka, taglia 160</small></td><td class="n y">3.020</td><td class="n">17,06</td></tr>
+      <tr><td>Kyoto, Namba<small>6 gen, JR e Midosuji; pi&ugrave; circa 700 &yen; col Rinkan</small></td><td class="n y">820</td><td class="n">4,63</td></tr>
+      <tr><td>Koyasan World Heritage Ticket<small>andata e ritorno, funicolare, bus del monte</small></td><td class="n y">4.210</td><td class="n">23,78</td></tr>
+      <tr><td>Shin-Osaka, Shinagawa, Nozomi<small>8 gen</small></td><td class="n y">14.720</td><td class="n">83,14</td></tr>
+      <tr class="sub"><td>Subtotale</td><td class="n y">37.340</td><td class="n">210,89</td></tr>
+      <tr class="gruppo"><td colspan="3">Gite in giornata</td></tr>
+      <tr><td>Nara, Kintetsu<small>andata e ritorno</small></td><td class="n y">1.520</td><td class="n">8,58</td></tr>
+      <tr><td>Kurama e Kibune, Eizan<small>riserva</small></td><td class="n y">940</td><td class="n">5,31</td></tr>
+      <tr><td>Himeji, Shinkansen<small>SmartEX; col rapido 2.920 in un'ora</small></td><td class="n y">7.740</td><td class="n">43,71</td></tr>
+      <tr><td>Monte Fuji, Fuji Excursion<small>Shinjuku, Shimoyoshida 4.010; locali 460; Kawaguchiko, Shinjuku 4.200</small></td><td class="n y">8.670</td><td class="n">48,97</td></tr>
+      <tr class="sub"><td>Subtotale</td><td class="n y">18.870</td><td class="n">106,57</td></tr>
+      <tr class="tot"><td>Totale a persona</td><td class="n y">67.480</td><td class="n">381,11</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <ul class="punti">
+      <li><b>Shinkansen</b>Nozomi a posti tutti riservati dal 25 dicembre al 5 gennaio. Su SmartEX si prenota gi&agrave; adesso, serve una carta con 3D Secure; si sale col QR.</li>
+      <li><b>Fuji Excursion</b>Su Ekinet dal 24 novembre. I biglietti si ritirano in una stazione JR East prima di partire, ritorno compreso.</li>
+      <li><b>Koyasan</b>Il World Heritage Ticket si compra da un mese prima agli sportelli Nankai di Namba, anche digitale a 3.980 &yen;. L'avviso sulla manutenzione invernale della funicolare esce a met&agrave; novembre.</li>
+      <li><b>JR Pass</b>Con queste tratte non si ripaga.</li>
+    </ul>
+  </div>
 </section>
 
 <!-- ============ SPESE ============ -->
 <section id="spese">
-  <h2><span>Le altre spese</span><span class="coda">tutto tranne il cibo<br>177 &yen; per 1 &euro;</span></h2>
+  <h2>Ingressi<small>nove mete a pagamento</small></h2>
+  <div class="card">
+    <table>
+      <tr><th>Meta</th><th class="n">Quando</th><th class="n">Yen</th><th class="n">Euro</th></tr>
+      <tr><td>Shibuya Sky<small>slot delle 16:20, online</small></td><td class="n y">31 dic</td><td class="n y">3.400</td><td class="n">19,20</td></tr>
+      <tr><td>Himeji<small>tariffa per non residenti</small></td><td class="n y">8 gen</td><td class="n y">2.500</td><td class="n">14,12</td></tr>
+      <tr><td>Koyasan, combinato<small>Kongobu-ji, Kondo, Daito, Reihokan</small></td><td class="n y">6 gen</td><td class="n y">2.500</td><td class="n">14,12</td></tr>
+      <tr><td>Umeda Sky Building</td><td class="n y">7 gen</td><td class="n y">2.000</td><td class="n">11,30</td></tr>
+      <tr><td>Todai-ji</td><td class="n y">5 gen</td><td class="n y">800</td><td class="n">4,52</td></tr>
+      <tr><td>Kinkaku-ji, Ginkaku-ji, Tenryu-ji<small>500, 1.000, 500</small></td><td class="n y">3-4 gen</td><td class="n y">2.000</td><td class="n">11,30</td></tr>
+      <tr><td>Kiyomizu-dera</td><td class="n y">3 gen</td><td class="n y">500</td><td class="n">2,82</td></tr>
+      <tr class="tot"><td>Totale a persona</td><td></td><td class="n y">13.700</td><td class="n">77,37</td></tr>
+    </table>
+  </div>
+  <p class="tempi">Gratis: Fushimi Inari, Meiji Jingu, Senso-ji, Okunoin, il parco di Nara, la Chureito, il Sengen. Fuori conto: Tsutenkaku 1.500, scimmie 800, funivia del lago 1.200.</p>
 
-  <div class="gruppo">Ingressi</div>
-  <table>
-    <tr><th>Meta</th><th class="n">Quando</th><th class="n">Yen</th><th class="n">A persona</th></tr>
-    <tr><td>Shibuya Sky<small>slot delle 16:20 online; dalle 15 costa 700 &yen; in pi&ugrave;</small></td><td class="n y">31 dic</td><td class="n y">3.400</td><td class="n">19,20 &euro;</td></tr>
-    <tr><td>Himeji<small>tariffa per non residenti dal 1 marzo 2026</small></td><td class="n y">8 gen</td><td class="n y">2.500</td><td class="n">14,12 &euro;</td></tr>
-    <tr><td>Koyasan, biglietto combinato<small>Kongobu-ji, Kondo, Konpon Daito e Reihokan; l'Okunoin &egrave; gratis</small></td><td class="n y">6 gen</td><td class="n y">2.500</td><td class="n">14,12 &euro;</td></tr>
-    <tr><td>Umeda Sky Building<small>allo sportello; online sconto</small></td><td class="n y">7 gen</td><td class="n y">2.000</td><td class="n">11,30 &euro;</td></tr>
-    <tr><td>Todai-ji, Sala del Grande Buddha</td><td class="n y">5 gen</td><td class="n y">800</td><td class="n">4,52 &euro;</td></tr>
-    <tr><td>Kinkaku-ji, Ginkaku-ji e Tenryu-ji<small>500, 1.000 dall'aprile 2026, 500 il giardino</small></td><td class="n y">3-4 gen</td><td class="n y">2.000</td><td class="n">11,30 &euro;</td></tr>
-    <tr><td>Kiyomizu-dera</td><td class="n y">3 gen</td><td class="n y">500</td><td class="n">2,82 &euro;</td></tr>
-    <tr class="tot"><td>Totale ingressi</td><td></td><td class="n y">13.700</td><td class="n">77,37 &euro;</td></tr>
-  </table>
-  <p class="nota">Gratis: Fushimi Inari, Meiji Jingu, Senso-ji, Okunoin, il parco di Nara, la pagoda Chureito, il santuario Sengen. Opzionali fuori conto: Tsutenkaku 1.500 &yen; con orario prenotato, scimmie di Iwatayama 800, funivia del lago Kawaguchi 1.200 andata e ritorno. L'area interna del Kasuga Taisha &egrave; chiusa fino al 7 gennaio.</p>
-
-  <div class="gruppo">Tassa di soggiorno</div>
-  <table>
-    <tr><th>Citt&agrave;</th><th class="n">Notti</th><th class="n">Yen</th><th class="n">A persona</th></tr>
-    <tr><td>Kyoto<small>200 &yen; a notte sotto i 6.000 &yen; a persona</small></td><td class="n y">4</td><td class="n y">800</td><td class="n">4,52 &euro;</td></tr>
-    <tr><td>Tokyo<small>100 &yen; a notte fra 10.000 e 15.000 &yen;</small></td><td class="n y">4</td><td class="n y">400</td><td class="n">2,26 &euro;</td></tr>
-    <tr><td>Osaka<small>200 &yen; a notte da 5.000 &yen;; sotto &egrave; esente. Sul monte Koya non si paga</small></td><td class="n y">2</td><td class="n y">400</td><td class="n">2,26 &euro;</td></tr>
-    <tr class="tot"><td>Totale tassa<small>si paga al check-in, mai nelle tariffe di Booking</small></td><td></td><td class="n y">1.600</td><td class="n">9,04 &euro;</td></tr>
-  </table>
-
-  <div class="gruppo">Per arrivare a Fiumicino, e il resto</div>
-  <table>
-    <tr><th>Voce</th><th>Chi</th><th class="n">A persona</th></tr>
-    <tr><td>Treno da Napoli, pagato<small>FR 9630 il 28 alle 10:25, FR 8343 il 9 alle 17:11, posti scelti</small></td><td class="y">Carlo e Maurizio</td><td class="n">85,80 &euro;</td></tr>
-    <tr><td>Treno da Milano e da Trento<small>stima</small></td><td class="y">Francesco e Davis</td><td class="n">150,00 &euro;</td></tr>
-    <tr><td>Leonardo Express, Termini &harr; Fiumicino<small>14 &euro; a tratta; in quattro insieme l'offerta Minigruppi porta il biglietto a 10</small></td><td class="y">tutti</td><td class="n">28,00 &euro;</td></tr>
-    <tr><td>eSIM dati per tredici giorni</td><td class="y">tutti</td><td class="n">30,00 &euro;</td></tr>
-    <tr><td>Assicurazione medico e bagaglio<small>stima, da comprare; l'annullamento del volo non &egrave; compreso</small></td><td class="y">tutti</td><td class="n">45,00 &euro;</td></tr>
-  </table>
+  <div class="due">
+  <div>
+  <h2>Tassa di soggiorno<small>si paga al check-in, mai su Booking</small></h2>
+  <div class="card">
+    <table>
+      <tr><th>Citt&agrave;</th><th class="n">Notti</th><th class="n">Yen</th><th class="n">Euro</th></tr>
+      <tr><td>Kyoto<small>200 &yen; a notte</small></td><td class="n y">4</td><td class="n y">800</td><td class="n">4,52</td></tr>
+      <tr><td>Tokyo<small>100 &yen; a notte</small></td><td class="n y">4</td><td class="n y">400</td><td class="n">2,26</td></tr>
+      <tr><td>Osaka<small>200 &yen; a notte, forse esente</small></td><td class="n y">2</td><td class="n y">400</td><td class="n">2,26</td></tr>
+      <tr class="tot"><td>Totale a persona</td><td></td><td class="n y">1.600</td><td class="n">9,04</td></tr>
+    </table>
+  </div>
+  </div>
+  <div>
+  <h2>In Italia, e il resto<small>a persona</small></h2>
+  <div class="card">
+    <table>
+      <tr><th>Voce</th><th class="n">Euro</th></tr>
+      <tr><td>Treno da Napoli, pagato<small>Carlo e Maurizio</small></td><td class="n">85,80</td></tr>
+      <tr><td>Treno da Milano e da Trento<small>Francesco e Davis, stima</small></td><td class="n">150,00</td></tr>
+      <tr><td>Leonardo Express<small>14 &euro; a tratta; in quattro insieme 10 con Minigruppi</small></td><td class="n">28,00</td></tr>
+      <tr><td>eSIM, tredici giorni</td><td class="n">30,00</td></tr>
+      <tr><td>Assicurazione medico e bagaglio<small>stima, da comprare</small></td><td class="n">45,00</td></tr>
+    </table>
+  </div>
+  </div>
+  </div>
 </section>
 
 <!-- ============ TAVOLE ============ -->
 <section id="tavole">
-  <h2><span>Sei tavole</span><span class="coda">cinque cene e un pranzo<br>fuori dal conto</span></h2>
-  <p class="avviso">Due criteri, in quest'ordine. Fra il 29 dicembre e il 3 gennaio i ristoranti giapponesi chiudono quasi tutti e riaprono a scaglioni fino al 5, quindi ogni tavola sta nel giorno in cui &egrave; davvero aperta. Poi il punteggio Tabelog, dove la media &egrave; 3,0 e sopra 3,5 c'&egrave; il cinque per cento migliore del paese: locali di quartiere, niente stellati. I prezzi sono stime di fascia.</p>
-  <table>
-    <tr><th>Tavola</th><th class="n">Giorno</th><th class="n">Yen a testa</th><th class="n">Euro</th></tr>
-    <tr><td>Kamo to Negi<small>ramen di anatra, Okachimachi, 3,73</small></td><td class="n y">29 dic</td><td class="n y">1.500</td><td class="n">8,47</td></tr>
-    <tr><td>Sushi Shiogamakou Ginza Kiwami<small>sushi al bancone, Ginza, 3,51 &middot; prenotato, in due</small></td><td class="n y">30 dic</td><td class="n y">42.350</td><td class="n">239,19</td></tr>
-    <tr><td>Maguro Koya<small>pranzo di tonno, Nara</small></td><td class="n y">5 gen</td><td class="n y">1.800</td><td class="n">10,17</td></tr>
-    <tr><td>Muromachi Kaji<small>cucina di stagione, Kyoto, 3,68 &middot; da prenotare</small></td><td class="n y">5 gen</td><td class="n y">9.000</td><td class="n">50,83</td></tr>
-    <tr class="giu"><td>Shukubo Soujiin<small>shojin ryori, compresa nel soggiorno</small></td><td class="n y">6 gen</td><td class="n y">&ndash;</td><td class="n">&ndash;</td></tr>
-    <tr><td>Bifteck Kawamura Premium<small>teppanyaki di wagyu, Kitashinchi, 3,61 &middot; da prenotare, pi&ugrave; 10% di servizio</small></td><td class="n y">7 gen</td><td class="n y">16.000</td><td class="n">90,37</td></tr>
-    <tr class="tot"><td>Chi fa tutte le tavole<small>chi salta il sushi: 28.300 &yen;, 159,83 &euro;</small></td><td></td><td class="n y">70.650</td><td class="n">399,02</td></tr>
-  </table>
-
-  <div class="sep">Una per una</div>
-  <div class="mete">
-    <div class="meta"><div class="foto"><img src="foto/cibo-kamotonegi.jpg" alt="" loading="lazy"></div><div class="capo"><div class="ti">Kamo to Negi</div><div class="du">mar 29 dic</div></div><p>Ueno 6-4-15, un minuto da Okachimachi. Brodo di sola anatra, porro e acqua: 3,73 con 4.800 giudizi per mille o duemila yen. Diciannove posti, code, solo contanti.<span class="v">aperto 24 ore tutto l'anno: &egrave; la rete di sicurezza per il 31 e per l'1</span></p></div>
-    <div class="meta"><div class="foto"><img src="foto/cibo-kiwami.jpg" alt="" loading="lazy"></div><div class="capo"><div class="ti">Sushi Shiogamakou Ginza Kiwami</div><div class="du">mer 30 dic, 20:00</div></div><p>Ginza 5-5-12, dodicesimo piano del palazzo HULIC &amp; New Ginza Miyuki, cinque minuti dalla stazione di Ginza. Tuna Kiwami Course: negitoro, tre antipasti, sei sashimi di tonno, toro sukiyaki, toro steak, otto nigiri, Extreme Roll, castella e zuppa; un'ora e mezza al bancone. 38.500 &yen; tasse incluse pi&ugrave; il 10% di servizio, bevande a parte.<span class="v">prenotato per Carlo e Maurizio; deve presentarsi chi ha prenotato; niente profumi forti</span></p></div>
-    <div class="meta"><div class="foto"><img src="foto/cibo-magurokoya.jpg" alt="" loading="lazy"></div><div class="capo"><div class="ti">Maguro Koya</div><div class="du">mar 5 gen, a pranzo</div></div><p>Higashimuki Kitamachi 21-1, due minuti da Kintetsu Nara. Una stanza sola che fa solo tonno dal 1977, ciotole e piatti fra 1.300 e 3.900 &yen;. Luned&igrave;-sabato 11-20, carte accettate, niente prenotazioni.</p></div>
-    <div class="meta"><div class="foto"><img src="foto/cibo-kaji.jpg" alt="" loading="lazy"></div><div class="capo"><div class="ti">Muromachi Kaji</div><div class="du">mar 5 gen</div></div><p>Nakano-cho 185, dietro Gojo, a piedi dall'Oyado. 3,68 con pi&ugrave; di 500 giudizi e una carta che cambia ogni mese su quello che lo chef trova al mercato. Otto o diecimila yen; turni alle 18:00 e alle 20:30; chiuso il gioved&igrave;.<span class="v">accetta prenotazioni solo in giapponese: serve qualcuno che telefoni, oppure si cambia locale</span></p></div>
-    <div class="meta"><div class="foto"><img src="foto/cibo-shojin.jpg" alt="" loading="lazy"></div><div class="capo"><div class="ti">Shukubo Soujiin</div><div class="du">mer 6 gen</div></div><p>La cucina dei monaci, servita nel tempio dove si dorme: niente carne, pesce, aglio n&eacute; cipolla, tutto costruito intorno al tofu. Non si prenota e non si paga, &egrave; dentro il soggiorno.<span class="v">si cena solo arrivando entro le 17</span></p></div>
-    <div class="meta"><div class="foto"><img src="foto/cibo-kobe.jpg" alt="" loading="lazy"></div><div class="capo"><div class="ti">Bifteck Kawamura Premium</div><div class="du">gio 7 gen</div></div><p>Sonezakishinchi 1-4-20, un minuto da Kitashinchi, accanto a Umeda. Il manzo cotto sulla piastra davanti agli occhi: corsi da 12.100, 13.750 e 15.400 &yen; col manzo nero giapponese, Kobe vero da 25.300; la sera si aggiunge il 10% di servizio. Chiuso il marted&igrave;.<span class="v">si prenota online o per telefono; disdetta in giornata al 100%</span></p></div>
+  <h2>Sei tavole<small>fuori dal conto del viaggio; punteggi Tabelog, dove sopra 3,5 c'&egrave; il cinque per cento migliore del paese</small></h2>
+  <div class="luoghi">
+    <div class="luogo"><img src="foto/cibo-kamotonegi.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Kamo to Negi</h4><span class="durata">mar 29 dic</span></div><p>Ramen di sola anatra, porro e acqua. Okachimachi, Ueno 6-4-15. Tabelog 3,73. 1.000-2.000 &yen;.<span class="v">aperto 24 ore, solo contanti, si fa la fila</span></p></div></div>
+    <div class="luogo"><img src="foto/cibo-kiwami.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Sushi Shiogamakou Ginza Kiwami</h4><span class="durata">mer 30 dic, 20:00</span></div><p>Corso di tonno al bancone, un'ora e mezza. Ginza 5-5-12, dodicesimo piano. Tabelog 3,51. 38.500 &yen; pi&ugrave; 10% di servizio, bevande a parte.<span class="v">prenotato per Carlo e Maurizio; niente profumi forti</span></p></div></div>
+    <div class="luogo"><img src="foto/cibo-magurokoya.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Maguro Koya</h4><span class="durata">mar 5 gen, pranzo</span></div><p>Solo tonno dal 1977, due minuti da Kintetsu Nara. 1.300-3.900 &yen;, carte accettate.<span class="v">luned&igrave;-sabato 11-20, niente prenotazioni</span></p></div></div>
+    <div class="luogo"><img src="foto/cibo-kaji.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Muromachi Kaji</h4><span class="durata">mar 5 gen</span></div><p>Cucina di stagione, carta che cambia ogni mese. Nakano-cho 185, dietro Gojo. Tabelog 3,68. 8-10.000 &yen;.<span class="v">turni 18:00 e 20:30; prenota solo chi parla giapponese</span></p></div></div>
+    <div class="luogo"><img src="foto/cibo-shojin.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Shukubo Soujiin</h4><span class="durata">mer 6 gen</span></div><p>La cucina dei monaci nel tempio dove si dorme: niente carne, pesce, aglio n&eacute; cipolla. Compresa nel soggiorno.<span class="v">si cena solo arrivando entro le 17</span></p></div></div>
+    <div class="luogo"><img src="foto/cibo-kobe.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Bifteck Kawamura Premium</h4><span class="durata">gio 7 gen</span></div><p>Teppanyaki di wagyu a Kitashinchi, accanto a Umeda. Corsi da 12.100 &yen;, Kobe da 25.300, pi&ugrave; 10% la sera. Tabelog 3,61.<span class="v">da prenotare a novembre; disdetta in giornata al 100%</span></p></div></div>
   </div>
-  <div class="tempi"><b>Prenotare</b><div>Kiwami &egrave; preso. Kawamura si prenota a novembre dal sito o da Tabelog. Kaji vuole una telefonata in giapponese. Kamo to Negi e Maguro Koya non prendono prenotazioni, si fa la fila. La sera dell'1 resta libera: si decide sul posto, con Kamo to Negi di appoggio. I giorni di chiusura di fine anno si riconfermano a dicembre, quando ogni locale pubblica il suo calendario.</div></div>
+  <div class="tiles">
+    <div class="tile somma"><b>399 &euro;</b><span>a testa per chi fa tutte le tavole, 70.650 &yen;</span></div>
+    <div class="tile"><b>160 &euro;</b><span>per chi salta il sushi del 30, 28.300 &yen;</span></div>
+  </div>
+  <p class="tempi">La sera dell'1 resta libera, con Kamo to Negi di appoggio. I calendari di fine anno dei locali escono a dicembre.</p>
 </section>
 
 <!-- ============ DA FARE ============ -->
 <section id="dafare">
-  <h2><span>Da fare</span><span class="coda">in ordine di tempo</span></h2>
-  <ul>
-    <li class="k"><b>adesso</b>: account SmartEX e prenotazioni anticipate del Nozomi del 2 gennaio (Tokyo &rarr; Kyoto, posti con spazio valigie), del Nozomi dell'8 (Shin-Osaka &rarr; Shinagawa, 18:06) e di Himeji andata e ritorno. Confermare che tutti e quattro siano sugli stessi voli.</li>
-    <li class="k"><b>fine ottobre</b>: messaggi agli hotel da Booking: Edo Sakura (partenza alle 5:30 del 2), Oyado (istruzioni del self check-in, bagagli prima delle 16, pagamento), Soujiin (cena e colazione comprese, orario della cerimonia), APA (una valigia in arrivo col takkyubin il 7).</li>
-    <li class="k"><b>novembre</b>: Kawamura; Kaji o il suo sostituto; Visit Japan Web per tutti; assicurazione medico e bagaglio; eSIM; passaporti controllati.</li>
-    <li class="k"><b>24 nov, 6:00</b>: Ekinet, prenotazione anticipata del Fuji Excursion 7 dell'1 gennaio e del ritorno delle 16:48. Se non d&agrave; posti, vendita il <b>1 dic alle 2:00</b> (ore italiane).</li>
-    <li class="k"><b>2-3 dic</b>: Shibuya Sky, slot delle 16:20 del 31, in vendita quattro settimane prima; lo slot del tramonto finisce per primo.</li>
-    <li class="k"><b>dicembre</b>: calendari di fine anno dei locali e di Tsukiji, avviso Nankai sulla funicolare, orari dei treni della notte del 31 e dell'1, apertura della funivia del lago.</li>
-    <li class="k"><b>26 dic</b>: ultimo giorno per disdire Kiwami senza penale.</li>
-  </ul>
+  <h2>Da fare<small>in ordine di tempo</small></h2>
+  <div class="card">
+    <ul class="todo">
+      <li><time>adesso</time><div><b>SmartEX</b>: account e prenotazioni anticipate del Nozomi del 2 (Tokyo, Kyoto, posti con spazio valigie), del Nozomi dell'8 (18:06) e di Himeji. Confermare che siamo tutti sugli stessi voli.</div></li>
+      <li><time>fine ott</time><div><b>Messaggi agli hotel da Booking</b>: Edo Sakura (uscita alle 5:30 del 2), Oyado (self check-in, bagagli, pagamento), Soujiin (cena e colazione comprese, orario della cerimonia), APA (valigia in arrivo il 7).</div></li>
+      <li><time>novembre</time><div><b>Kawamura</b>, <b>Kaji</b> o il suo sostituto, Visit Japan Web per tutti, assicurazione, eSIM, passaporti controllati.</div></li>
+      <li><time>24 nov</time><div><b>Ekinet alle 6:00</b>: prenotazione anticipata del Fuji Excursion 7 e del ritorno delle 16:48. Se non d&agrave; posti, vendita il 1 dicembre alle 2:00.</div></li>
+      <li><time>2-3 dic</time><div><b>Shibuya Sky</b>, slot delle 16:20 del 31: in vendita quattro settimane prima, il tramonto finisce per primo.</div></li>
+      <li><time>dicembre</time><div>Calendari di fine anno dei locali e di Tsukiji, avviso Nankai sulla funicolare, treni della notte del 31, funivia del lago.</div></li>
+      <li><time>26 dic</time><div><b>Kiwami</b>: ultimo giorno per disdire senza penale.</div></li>
+    </ul>
+  </div>
 
-  <h2><span>Da decidere</span></h2>
-  <ul>
-    <li>Il 30 dicembre al posto di Odaiba: Harajuku e Cat Street, o altro.</li>
-    <li>Il 2 gennaio: Nozomi delle 6:00 con check-out concordato, oppure uno verso le 7:30.</li>
-    <li>Muromachi Kaji: chi telefona in giapponese, o con cosa sostituirlo.</li>
-    <li>Se Himeji resta dentro, ora che l'8 &egrave; mezza giornata.</li>
-    <li>La sera dell'1 gennaio.</li>
-  </ul>
+  <h2>Da decidere</h2>
+  <div class="card">
+    <ul class="punti">
+      <li><b>Il 30 dicembre</b>Harajuku e Cat Street al posto di Odaiba, o altro.</li>
+      <li><b>Il 2 gennaio</b>Nozomi delle 6:00 con check-out concordato, oppure uno verso le 7:30.</li>
+      <li><b>Muromachi Kaji</b>Chi telefona in giapponese, o con cosa sostituirlo.</li>
+      <li><b>Himeji</b>Se resta dentro, ora che l'8 &egrave; mezza giornata.</li>
+      <li><b>La sera dell'1</b>Si decide sul posto.</li>
+    </ul>
+  </div>
 </section>
 
 </main>
 
-<footer>Aggiornata il 15 ottobre 2026. Prezzi e orari verificati sulle fonti ufficiali il 15 ottobre 2026; cambio BCE del giorno, 177,06 &yen; per 1 &euro;. Gli orari dei treni giapponesi di fine anno escono a novembre.</footer>
+<footer>Aggiornata il 15 ottobre 2026. Prezzi e orari verificati sulle fonti ufficiali il 15 ottobre 2026, cambio BCE del giorno 177,06 &yen; per euro. Foto da Wikimedia Commons e Wikipedia, licenze libere.</footer>
 
 </div>
 <script src="app.js"></script>
