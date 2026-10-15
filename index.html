@@ -12,7 +12,7 @@
 @font-face{font-family:"Zen Kaku";src:url(fonts/zen-900.woff2) format("woff2");font-weight:900;font-display:swap}
 @font-face{font-family:"Plex Mono";src:url(fonts/plex-500.woff2) format("woff2");font-weight:500;font-display:swap}
 @font-face{font-family:"Plex Mono";src:url(fonts/plex-600.woff2) format("woff2");font-weight:600;font-display:swap}
-:root{--ink:#16150F;--testo2:#5C574A;--carta:#FFFFFF;--superficie:#F3F1EC;--riga:#E4E0D6;--tokyo:#4B7F1F;--kyoto:#86285C;--koya:#A63A22;--osaka:#10547F;--viaggio:#6B665A;--linea:var(--ink);--sans:"Zen Kaku","Segoe UI",system-ui,sans-serif;--mono:"Plex Mono",ui-monospace,Menlo,Consolas,monospace}
+:root{--ink:#16150F;--testo2:#5C574A;--carta:#FFFFFF;--superficie:#F3F1EC;--riga:#E4E0D6;--tokyo:#44741C;--kyoto:#86285C;--koya:#A63A22;--osaka:#10547F;--viaggio:#6B665A;--linea:var(--ink);--sans:"Zen Kaku","Segoe UI",system-ui,sans-serif;--mono:"Plex Mono",ui-monospace,Menlo,Consolas,monospace}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--carta);color:var(--ink);font:500 16px/1.55 var(--sans);font-variant-numeric:tabular-nums}
@@ -27,9 +27,8 @@ h1{font-size:56px;line-height:.92;letter-spacing:-.04em;margin:0;font-weight:900
 .fermata b{display:block;font-size:15px;font-weight:700;margin-top:10px;line-height:1.2}
 .fermata .date{display:block;font:500 14px/1.4 var(--mono);color:var(--testo2)}
 .f-tokyo{--linea:var(--tokyo)}.f-kyoto{--linea:var(--kyoto)}.f-koya{--linea:var(--koya)}.f-osaka{--linea:var(--osaka)}.f-viaggio{--linea:var(--viaggio)}
-.tabs{position:sticky;top:0;z-index:2;background:var(--carta);display:flex;flex-wrap:wrap;border-bottom:2px solid var(--riga);margin:24px 0 0}
+.tabs{position:sticky;top:0;z-index:2;background:var(--carta);display:flex;flex-wrap:wrap;border-bottom:2px solid var(--riga);margin:24px 0 0 -14px}
 .tabs a{display:flex;align-items:center;min-height:48px;padding:0 14px;font-weight:700;font-size:16px;color:var(--testo2);text-decoration:none;border-bottom:3px solid transparent;margin-bottom:-2px}
-.tabs a:first-child{padding-left:0}
 .tabs a.on{color:var(--ink);border-bottom-color:var(--ink)}
 .tabs a:focus-visible{outline:3px solid var(--ink);outline-offset:-3px}
 .js main>section{display:none}.js main>section.on{display:block}
@@ -47,14 +46,15 @@ section>h2:first-child{margin-top:16px}
 .tile span{display:block;font-size:14px;line-height:1.4;color:var(--testo2);margin-top:6px}
 .tile.somma{background:var(--ink);color:var(--carta)}
 .tile.somma span{color:#D9D4C7}
-.volo{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center}
+.volo{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:start}
 .volo .ap{font:900 30px/1 var(--sans);letter-spacing:-.03em}
 .volo .ora{font:600 20px/1.3 var(--mono)}
-.volo .dove{font-size:14px;color:var(--testo2)}
-.volo .freccia{font:500 15px/1.3 var(--mono);color:var(--testo2);text-align:center}
+.volo .dove{font-size:14px;color:var(--testo2);white-space:nowrap}
+.volo .freccia{font:500 15px/1.3 var(--mono);color:var(--testo2);text-align:center;white-space:nowrap}
 .volo .freccia::before{content:"";display:block;height:3px;background:var(--riga);margin-bottom:6px}
 .volo .a{text-align:right}
 .dett{margin:14px 0 0;padding:14px 0 0;border-top:1px solid var(--riga);font-size:15px;color:var(--testo2)}
+.dett,.tempi,.hotel .avviso,.sotto,h2 small{max-width:65ch}
 .dett b{color:var(--ink);font-weight:700}
 .notti{display:grid;gap:14px}
 .notte{display:grid;grid-template-columns:44px 1fr auto;gap:14px;align-items:center}
@@ -68,7 +68,7 @@ section>h2:first-child{margin-top:16px}
 .passo b{font-weight:700}
 .passo span{display:block;color:var(--testo2);font-size:15px}
 .margine{display:flex;gap:14px;align-items:baseline;margin-top:14px;padding-top:14px;border-top:1px solid var(--riga)}
-.margine b{font:600 30px/1 var(--mono);letter-spacing:-.03em}
+.margine b{font:600 30px/1 var(--mono);letter-spacing:-.03em;white-space:nowrap}
 .margine span{font-size:15px;color:var(--testo2)}
 ul.punti{margin:0;padding:0;list-style:none;display:grid;gap:12px}
 ul.punti li{padding-left:0;font-size:15px;color:var(--testo2);line-height:1.5}
@@ -88,7 +88,7 @@ ul.punti li b{display:block;color:var(--ink);font-size:16px;font-weight:700}
 .g-tokyo{--linea:var(--tokyo)}.g-kyoto{--linea:var(--kyoto)}.g-koya{--linea:var(--koya)}.g-osaka{--linea:var(--osaka)}.g-viaggio{--linea:var(--viaggio)}
 .fascia{background:var(--linea);color:var(--carta);border-radius:16px;padding:28px 20px 24px;margin:40px 0 20px;display:flex;justify-content:space-between;align-items:flex-end;gap:16px}
 .fascia h3{margin:0;font-size:40px;line-height:.95;letter-spacing:-.04em;font-weight:900}
-.fascia div{font:500 15px/1.5 var(--mono);text-align:right;opacity:.92}
+.fascia div{font:500 15px/1.5 var(--mono);text-align:right}
 .t-tokyo{--linea:var(--tokyo)}.t-kyoto{--linea:var(--kyoto)}.t-koya{--linea:var(--koya)}.t-osaka{--linea:var(--osaka)}
 .hotel .corpo h4{margin:0;font-size:22px;font-weight:900;letter-spacing:-.02em;line-height:1.1}
 .hotel .corpo .dove{font-size:15px;color:var(--testo2);margin:6px 0 14px}
@@ -138,7 +138,7 @@ footer{margin-top:48px;padding-top:16px;border-top:2px solid var(--riga);font-si
   <h1>Giappone</h1>
   <p class="sotto">Dal 28 dicembre 2026 al 9 gennaio 2027, in quattro. Dieci notti a terra, una in volo.</p>
   <div class="mappa">
-    <div class="fermata f-tokyo"><span class="anello">T</span><b>Tokyo</b><span class="date">29 dic &ndash; 1 gen</span></div>
+    <div class="fermata f-tokyo"><span class="anello">T</span><b>Tokyo</b><span class="date">29 dic<br>&ndash; 1 gen</span></div>
     <div class="fermata f-kyoto"><span class="anello">K</span><b>Kyoto</b><span class="date">2 &ndash; 5 gen</span></div>
     <div class="fermata f-koya"><span class="anello">M</span><b>Monte Koya</b><span class="date">6 gen</span></div>
     <div class="fermata f-osaka"><span class="anello">O</span><b>Osaka</b><span class="date">7 &ndash; 8 gen</span></div>
@@ -159,12 +159,12 @@ footer{margin-top:48px;padding-top:16px;border-top:2px solid var(--riga);font-si
 
 <!-- ============ RIEPILOGO ============ -->
 <section id="riepilogo" class="on">
-  <h2>Quanto costa<small>a persona, cibo escluso, al cambio di 177 &yen; per euro</small></h2>
+  <h2>Quanto costa<small>a persona, cibo escluso, al cambio di 177&nbsp;&yen; per euro</small></h2>
   <div class="tiles">
-    <div class="tile somma"><b>2.759 &euro;</b><span>a testa da Napoli, con tutto dentro tranne i pasti</span></div>
-    <div class="tile"><b>1.510 &euro;</b><span>il volo, pagato</span></div>
-    <div class="tile"><b>592 &euro;</b><span>undici notti, pagate</span></div>
-    <div class="tile"><b>656 &euro;</b><span>treni, ingressi, tasse, eSIM, assicurazione</span></div>
+    <div class="tile somma"><b>2.758,61 &euro;</b><span>a testa da Napoli, con tutto dentro tranne i pasti</span></div>
+    <div class="tile"><b>1.510,50 &euro;</b><span>il volo, pagato</span></div>
+    <div class="tile"><b>591,79 &euro;</b><span>undici notti, pagate</span></div>
+    <div class="tile"><b>656,32 &euro;</b><span>treni, ingressi, tasse, eSIM, assicurazione</span></div>
   </div>
 
   <h2>Voli</h2>
@@ -216,11 +216,11 @@ footer{margin-top:48px;padding-top:16px;border-top:2px solid var(--riga);font-si
   <h2>Da sapere</h2>
   <div class="card">
     <ul class="punti">
-      <li><b>Valigie sullo Shinkansen</b>Sopra i 160 cm di somma dei lati serve il posto con spazio bagagli, scelto quando si prenota. Senza: 1.000 &yen; a bordo.</li>
+      <li><b>Valigie sullo Shinkansen</b>Sopra i 160 cm di somma dei lati serve il posto con spazio bagagli, scelto quando si prenota. Senza: 1.000&nbsp;&yen; a bordo.</li>
       <li><b>Visit Japan Web</b>Da compilare prima: d&agrave; i QR per immigrazione e dogana. Passaporto valido per il soggiorno, nessun visto.</li>
       <li><b>Contanti</b>Kamo to Negi e molti templi prendono solo contanti. I bancomat dei 7-Eleven funzionano anche a Capodanno.</li>
       <li><b>Farmaci</b>Niente decongestionanti con pseudoefedrina sopra il 10%; con codeina sopra l'1% serve un permesso.</li>
-      <li><b>Tax free dal 1 novembre</b>In negozio si paga tutto, l'IVA si recupera a Haneda dopo la dogana. Minimo 5.000 &yen; per negozio e per giorno.</li>
+      <li><b>Tax free dal 1 novembre</b>In negozio si paga tutto, l'IVA si recupera a Haneda dopo la dogana. Minimo 5.000&nbsp;&yen; per negozio e per giorno.</li>
       <li><b>Notte del 31</b>La metro di Tokyo l'anno scorso non ha fatto notturno, la JR s&igrave;: dallo Zojo-ji si torna in Yamanote da Hamamatsucho a Uguisudani.</li>
     </ul>
   </div>
@@ -286,7 +286,7 @@ footer{margin-top:48px;padding-top:16px;border-top:2px solid var(--riga);font-si
       <div class="momento"><time>08:30</time><div><b>Fuji Excursion 7</b> da Shinjuku, biglietti gi&agrave; ritirati in stazione JR</div></div>
       <div class="momento"><time>10:13</time><div>Shimoyoshida: <b>pagoda Chureito</b>, 398 gradini</div></div>
       <div class="momento"><time>12:30</time><div><b>Hatsumode</b> al Kitaguchi Hongu Fuji Sengen</div></div>
-      <div class="momento"><time>14:30</time><div><b>Lago Kawaguchi</b>, funivia 1.200 &yen;; tramonto alle 16:43</div></div>
+      <div class="momento"><time>14:30</time><div><b>Lago Kawaguchi</b>, funivia 1.200&nbsp;&yen;; tramonto alle 16:43</div></div>
       <div class="momento"><time>16:48</time><div>Fuji Excursion per Shinjuku, arrivo verso le 18:45. Sera libera</div></div>
       <div class="momento nota"><div>Col cielo coperto si resta in citt&agrave;: Ikebukuro e Meiji Jingu.</div></div>
     </div>
@@ -474,7 +474,7 @@ footer{margin-top:48px;padding-top:16px;border-top:2px solid var(--riga);font-si
     </div>
   </div>
   <div class="luoghi">
-    <div class="luogo"><img src="foto/danjo.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Danjo Garan</h4><span class="durata">2 ore</span></div><p>Il cuore del complesso, la pagoda vermiglia, Kongobu-ji accanto. Biglietto combinato 2.500 &yen;.</p></div></div>
+    <div class="luogo"><img src="foto/danjo.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Danjo Garan</h4><span class="durata">2 ore</span></div><p>Il cuore del complesso, la pagoda vermiglia, Kongobu-ji accanto. Biglietto combinato 2.500&nbsp;&yen;.</p></div></div>
     <div class="luogo"><img src="foto/okunoin.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Okunoin</h4><span class="durata">due volte</span></div><p>Due chilometri di cedri e lanterne fino al mausoleo di Kobo Daishi: con la luce e dopo cena.<span class="v">il viale &egrave; sempre aperto, la Sala delle lanterne chiude alle 17</span></p></div></div>
   </div>
   <p class="tempi"><b>Una giornata intera sul monte</b> partendo da Kyoto alle 6:18. La cerimonia del mattino &egrave; compresa.</p>
@@ -497,7 +497,7 @@ footer{margin-top:48px;padding-top:16px;border-top:2px solid var(--riga);font-si
   <div class="luoghi">
     <div class="luogo"><img src="foto/denden.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Den Den Town</h4><span class="durata">mezza giornata</span></div><p>Super Potato, Mandarake, Surugaya, Animate. Sull'usato costa meno che a Tokyo.</p></div></div>
     <div class="luogo"><img src="foto/dotonbori.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Dotonbori</h4><span class="durata">una serata</span></div><p>I neon sul canale.</p></div></div>
-    <div class="luogo"><img src="foto/shinsekai.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Shinsekai</h4><span class="durata">2 ore</span></div><p>Il quartiere retr&ograve; ai piedi della Tsutenkaku.<span class="v">torre 1.500 &yen;, orario da prenotare</span></p></div></div>
+    <div class="luogo"><img src="foto/shinsekai.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Shinsekai</h4><span class="durata">2 ore</span></div><p>Il quartiere retr&ograve; ai piedi della Tsutenkaku.<span class="v">torre 1.500&nbsp;&yen;, orario da prenotare</span></p></div></div>
     <div class="luogo"><img src="foto/umeda.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Umeda Sky Building</h4><span class="durata">1-2 ore</span></div><p>L'osservatorio fra le due torri, 9:30-22:30. La sera del 7, al tramonto.</p></div></div>
     <div class="luogo"><img src="foto/himeji.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Himeji</h4><span class="durata">mezza giornata</span></div><p>Il castello mai ricostruito, mezz'ora di Shinkansen, 9-17.<span class="v">andata e ritorno 43,71 &euro;; la voce da tagliare se non si vuole correre</span></p></div></div>
   </div>
@@ -512,16 +512,16 @@ footer{margin-top:48px;padding-top:16px;border-top:2px solid var(--riga);font-si
       <tr><th>Spostamento</th><th class="n">Yen</th><th class="n">Euro</th></tr>
       <tr class="gruppo"><td colspan="3">In citt&agrave; e verso gli aeroporti</td></tr>
       <tr><td>Haneda T3, Iriya<small>29 dic, Keikyu e Hibiya</small></td><td class="n y">650</td><td class="n">3,67</td></tr>
-      <tr><td>Metro e treni a Tokyo<small>4 giorni, 1.000 &yen; al giorno</small></td><td class="n y">4.000</td><td class="n">22,59</td></tr>
+      <tr><td>Metro e treni a Tokyo<small>4 giorni, 1.000&nbsp;&yen; al giorno</small></td><td class="n y">4.000</td><td class="n">22,59</td></tr>
       <tr><td>Bus e metro a Kyoto<small>4 giorni</small></td><td class="n y">4.000</td><td class="n">22,59</td></tr>
       <tr><td>Metro a Osaka<small>due mezze giornate</small></td><td class="n y">2.000</td><td class="n">11,30</td></tr>
       <tr><td>Namba, Shin-Osaka<small>8 gen, Midosuji</small></td><td class="n y">290</td><td class="n">1,64</td></tr>
       <tr><td>Shinagawa, Haneda<small>8 gen, Keikyu</small></td><td class="n y">330</td><td class="n">1,86</td></tr>
       <tr class="sub"><td>Subtotale</td><td class="n y">11.270</td><td class="n">63,65</td></tr>
       <tr class="gruppo"><td colspan="3">Da una tappa all'altra</td></tr>
-      <tr><td>Tokyo, Kyoto, Nozomi<small>2 gen, con 400 &yen; di picco</small></td><td class="n y">14.570</td><td class="n">82,29</td></tr>
+      <tr><td>Tokyo, Kyoto, Nozomi<small>2 gen, con 400&nbsp;&yen; di picco</small></td><td class="n y">14.570</td><td class="n">82,29</td></tr>
       <tr><td>Takkyubin, una valigia<small>5 gen, Kyoto a Osaka, taglia 160</small></td><td class="n y">3.020</td><td class="n">17,06</td></tr>
-      <tr><td>Kyoto, Namba<small>6 gen, JR e Midosuji; pi&ugrave; circa 700 &yen; col Rinkan</small></td><td class="n y">820</td><td class="n">4,63</td></tr>
+      <tr><td>Kyoto, Namba<small>6 gen, JR e Midosuji; pi&ugrave; circa 700&nbsp;&yen; col Rinkan</small></td><td class="n y">820</td><td class="n">4,63</td></tr>
       <tr><td>Koyasan World Heritage Ticket<small>andata e ritorno, funicolare, bus del monte</small></td><td class="n y">4.210</td><td class="n">23,78</td></tr>
       <tr><td>Shin-Osaka, Shinagawa, Nozomi<small>8 gen</small></td><td class="n y">14.720</td><td class="n">83,14</td></tr>
       <tr class="sub"><td>Subtotale</td><td class="n y">37.340</td><td class="n">210,89</td></tr>
@@ -538,7 +538,7 @@ footer{margin-top:48px;padding-top:16px;border-top:2px solid var(--riga);font-si
     <ul class="punti">
       <li><b>Shinkansen</b>Nozomi a posti tutti riservati dal 25 dicembre al 5 gennaio. Su SmartEX si prenota gi&agrave; adesso, serve una carta con 3D Secure; si sale col QR.</li>
       <li><b>Fuji Excursion</b>Su Ekinet dal 24 novembre. I biglietti si ritirano in una stazione JR East prima di partire, ritorno compreso.</li>
-      <li><b>Koyasan</b>Il World Heritage Ticket si compra da un mese prima agli sportelli Nankai di Namba, anche digitale a 3.980 &yen;. L'avviso sulla manutenzione invernale della funicolare esce a met&agrave; novembre.</li>
+      <li><b>Koyasan</b>Il World Heritage Ticket si compra da un mese prima agli sportelli Nankai di Namba, anche digitale a 3.980&nbsp;&yen;. L'avviso sulla manutenzione invernale della funicolare esce a met&agrave; novembre.</li>
       <li><b>JR Pass</b>Con queste tratte non si ripaga.</li>
     </ul>
   </div>
@@ -568,9 +568,9 @@ footer{margin-top:48px;padding-top:16px;border-top:2px solid var(--riga);font-si
   <div class="card">
     <table>
       <tr><th>Citt&agrave;</th><th class="n">Notti</th><th class="n">Yen</th><th class="n">Euro</th></tr>
-      <tr><td>Kyoto<small>200 &yen; a notte</small></td><td class="n y">4</td><td class="n y">800</td><td class="n">4,52</td></tr>
-      <tr><td>Tokyo<small>100 &yen; a notte</small></td><td class="n y">4</td><td class="n y">400</td><td class="n">2,26</td></tr>
-      <tr><td>Osaka<small>200 &yen; a notte, forse esente</small></td><td class="n y">2</td><td class="n y">400</td><td class="n">2,26</td></tr>
+      <tr><td>Kyoto<small>200&nbsp;&yen; a notte</small></td><td class="n y">4</td><td class="n y">800</td><td class="n">4,52</td></tr>
+      <tr><td>Tokyo<small>100&nbsp;&yen; a notte</small></td><td class="n y">4</td><td class="n y">400</td><td class="n">2,26</td></tr>
+      <tr><td>Osaka<small>200&nbsp;&yen; a notte, forse esente</small></td><td class="n y">2</td><td class="n y">400</td><td class="n">2,26</td></tr>
       <tr class="tot"><td>Totale a persona</td><td></td><td class="n y">1.600</td><td class="n">9,04</td></tr>
     </table>
   </div>
@@ -595,16 +595,16 @@ footer{margin-top:48px;padding-top:16px;border-top:2px solid var(--riga);font-si
 <section id="tavole">
   <h2>Sei tavole<small>fuori dal conto del viaggio; punteggi Tabelog, dove sopra 3,5 c'&egrave; il cinque per cento migliore del paese</small></h2>
   <div class="luoghi">
-    <div class="luogo"><img src="foto/cibo-kamotonegi.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Kamo to Negi</h4><span class="durata">mar 29 dic</span></div><p>Ramen di sola anatra, porro e acqua. Okachimachi, Ueno 6-4-15. Tabelog 3,73. 1.000-2.000 &yen;.<span class="v">aperto 24 ore, solo contanti, si fa la fila</span></p></div></div>
-    <div class="luogo"><img src="foto/cibo-kiwami.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Sushi Shiogamakou Ginza Kiwami</h4><span class="durata">mer 30 dic, 20:00</span></div><p>Corso di tonno al bancone, un'ora e mezza. Ginza 5-5-12, dodicesimo piano. Tabelog 3,51. 38.500 &yen; pi&ugrave; 10% di servizio, bevande a parte.<span class="v">prenotato per Carlo e Maurizio; niente profumi forti</span></p></div></div>
-    <div class="luogo"><img src="foto/cibo-magurokoya.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Maguro Koya</h4><span class="durata">mar 5 gen, pranzo</span></div><p>Solo tonno dal 1977, due minuti da Kintetsu Nara. 1.300-3.900 &yen;, carte accettate.<span class="v">luned&igrave;-sabato 11-20, niente prenotazioni</span></p></div></div>
-    <div class="luogo"><img src="foto/cibo-kaji.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Muromachi Kaji</h4><span class="durata">mar 5 gen</span></div><p>Cucina di stagione, carta che cambia ogni mese. Nakano-cho 185, dietro Gojo. Tabelog 3,68. 8-10.000 &yen;.<span class="v">turni 18:00 e 20:30; prenota solo chi parla giapponese</span></p></div></div>
+    <div class="luogo"><img src="foto/cibo-kamotonegi.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Kamo to Negi</h4><span class="durata">mar 29 dic</span></div><p>Ramen di sola anatra, porro e acqua. Okachimachi, Ueno 6-4-15. Tabelog 3,73. 1.000-2.000&nbsp;&yen;.<span class="v">aperto 24 ore, solo contanti, si fa la fila</span></p></div></div>
+    <div class="luogo"><img src="foto/cibo-kiwami.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Sushi Shiogamakou Ginza Kiwami</h4><span class="durata">mer 30 dic, 20:00</span></div><p>Corso di tonno al bancone, un'ora e mezza. Ginza 5-5-12, dodicesimo piano. Tabelog 3,51. 38.500&nbsp;&yen; pi&ugrave; 10% di servizio, bevande a parte.<span class="v">prenotato per Carlo e Maurizio; niente profumi forti</span></p></div></div>
+    <div class="luogo"><img src="foto/cibo-magurokoya.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Maguro Koya</h4><span class="durata">mar 5 gen, pranzo</span></div><p>Solo tonno dal 1977, due minuti da Kintetsu Nara. 1.300-3.900&nbsp;&yen;, carte accettate.<span class="v">luned&igrave;-sabato 11-20, niente prenotazioni</span></p></div></div>
+    <div class="luogo"><img src="foto/cibo-kaji.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Muromachi Kaji</h4><span class="durata">mar 5 gen</span></div><p>Cucina di stagione, carta che cambia ogni mese. Nakano-cho 185, dietro Gojo. Tabelog 3,68. 8-10.000&nbsp;&yen;.<span class="v">turni 18:00 e 20:30; prenota solo chi parla giapponese</span></p></div></div>
     <div class="luogo"><img src="foto/cibo-shojin.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Shukubo Soujiin</h4><span class="durata">mer 6 gen</span></div><p>La cucina dei monaci nel tempio dove si dorme: niente carne, pesce, aglio n&eacute; cipolla. Compresa nel soggiorno.<span class="v">si cena solo arrivando entro le 17</span></p></div></div>
-    <div class="luogo"><img src="foto/cibo-kobe.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Bifteck Kawamura Premium</h4><span class="durata">gio 7 gen</span></div><p>Teppanyaki di wagyu a Kitashinchi, accanto a Umeda. Corsi da 12.100 &yen;, Kobe da 25.300, pi&ugrave; 10% la sera. Tabelog 3,61.<span class="v">da prenotare a novembre; disdetta in giornata al 100%</span></p></div></div>
+    <div class="luogo"><img src="foto/cibo-kobe.jpg" alt="" loading="lazy"><div class="corpo"><div class="capo"><h4>Bifteck Kawamura Premium</h4><span class="durata">gio 7 gen</span></div><p>Teppanyaki di wagyu a Kitashinchi, accanto a Umeda. Corsi da 12.100&nbsp;&yen;, Kobe da 25.300, pi&ugrave; 10% la sera. Tabelog 3,61.<span class="v">da prenotare a novembre; disdetta in giornata al 100%</span></p></div></div>
   </div>
   <div class="tiles">
-    <div class="tile somma"><b>399 &euro;</b><span>a testa per chi fa tutte le tavole, 70.650 &yen;</span></div>
-    <div class="tile"><b>160 &euro;</b><span>per chi salta il sushi del 30, 28.300 &yen;</span></div>
+    <div class="tile somma"><b>399 &euro;</b><span>a testa per chi fa tutte le tavole, 70.650&nbsp;&yen;</span></div>
+    <div class="tile"><b>160 &euro;</b><span>per chi salta il sushi del 30, 28.300&nbsp;&yen;</span></div>
   </div>
   <p class="tempi">La sera dell'1 resta libera, con Kamo to Negi di appoggio. I calendari di fine anno dei locali escono a dicembre.</p>
 </section>
@@ -638,7 +638,7 @@ footer{margin-top:48px;padding-top:16px;border-top:2px solid var(--riga);font-si
 
 </main>
 
-<footer>Aggiornata il 15 ottobre 2026. Prezzi e orari verificati sulle fonti ufficiali il 15 ottobre 2026, cambio BCE del giorno 177,06 &yen; per euro. Foto da Wikimedia Commons e Wikipedia, licenze libere, e dalle schede delle strutture.</footer>
+<footer>Aggiornata il 15 ottobre 2026. Prezzi e orari verificati sulle fonti ufficiali il 15 ottobre 2026, cambio BCE del giorno 177,06&nbsp;&yen; per euro. Foto da Wikimedia Commons e Wikipedia, licenze libere, e dalle schede delle strutture.</footer>
 
 </div>
 <script src="app.js"></script>
