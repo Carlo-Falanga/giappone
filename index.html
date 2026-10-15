@@ -25,7 +25,7 @@ h1{font-size:56px;line-height:.92;letter-spacing:-.04em;margin:0;font-weight:900
 .fermata{position:relative;text-align:center;padding:0 4px}
 .anello{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--carta);border:4px solid var(--linea);color:var(--linea);font:900 18px/1 var(--sans);position:relative}
 .fermata b{display:block;font-size:15px;font-weight:700;margin-top:10px;line-height:1.2}
-.fermata span{display:block;font:500 14px/1.4 var(--mono);color:var(--testo2)}
+.fermata .date{display:block;font:500 14px/1.4 var(--mono);color:var(--testo2)}
 .f-tokyo{--linea:var(--tokyo)}.f-kyoto{--linea:var(--kyoto)}.f-koya{--linea:var(--koya)}.f-osaka{--linea:var(--osaka)}.f-viaggio{--linea:var(--viaggio)}
 .tabs{position:sticky;top:0;z-index:2;background:var(--carta);display:flex;flex-wrap:wrap;border-bottom:2px solid var(--riga);margin:24px 0 0}
 .tabs a{display:flex;align-items:center;min-height:48px;padding:0 14px;font-weight:700;font-size:16px;color:var(--testo2);text-decoration:none;border-bottom:3px solid transparent;margin-bottom:-2px}
@@ -74,10 +74,10 @@ ul.punti{margin:0;padding:0;list-style:none;display:grid;gap:12px}
 ul.punti li{padding-left:0;font-size:15px;color:var(--testo2);line-height:1.5}
 ul.punti li b{display:block;color:var(--ink);font-size:16px;font-weight:700}
 .giorno{background:var(--superficie);border-radius:16px;overflow:hidden;margin-bottom:20px}
-.giorno img{aspect-ratio:16/7}
+.giorno img{display:block;width:100%;aspect-ratio:16/7;object-fit:cover}
 .giorno .testa{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:center;padding:18px 20px 6px}
 .giorno .testa b{display:block;font-size:22px;font-weight:900;letter-spacing:-.02em;line-height:1.1}
-.giorno .testa span{display:block;font-size:15px;color:var(--testo2);margin-top:2px}
+.giorno .testa small{display:block;font-size:15px;color:var(--testo2);margin-top:2px}
 .momenti{padding:8px 20px 20px;display:grid;gap:10px}
 .momento{display:grid;grid-template-columns:52px 1fr;gap:12px;align-items:baseline}
 .momento time{font:600 15px/1.5 var(--mono);color:var(--linea)}
@@ -100,7 +100,7 @@ ul.punti li b{display:block;color:var(--ink);font-size:16px;font-weight:700}
 .hotel .avviso b{color:var(--ink)}
 .luoghi{display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:20px}
 .luogo{background:var(--superficie);border-radius:16px;overflow:hidden}
-.luogo img{aspect-ratio:2/1}
+.luogo img{display:block;width:100%;aspect-ratio:2/1;object-fit:cover}
 .luogo .corpo{padding:16px 20px 20px}
 .luogo .capo{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
 .luogo h4{margin:0;font-size:19px;font-weight:700;line-height:1.2}
@@ -127,7 +127,7 @@ tr.giu td{color:var(--testo2)}
 .todo li time{font:600 15px/1.5 var(--mono);color:var(--ink)}
 .todo li b{color:var(--ink);font-weight:700}
 footer{margin-top:48px;padding-top:16px;border-top:2px solid var(--riga);font-size:14px;line-height:1.5;color:var(--testo2)}
-@media(min-width:720px){h1{font-size:72px}.wrap{padding:0 24px 80px}.tabs{flex-wrap:nowrap}.tabs a{font-size:17px}.luoghi{grid-template-columns:1fr 1fr}.due{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}.tiles{grid-template-columns:repeat(4,1fr)}.card.foto.hotel{display:grid;grid-template-columns:320px 1fr}.hotel img{aspect-ratio:4/3;height:100%}.giorno{display:grid;grid-template-columns:260px 1fr}.giorno img{aspect-ratio:auto;height:100%}.giorno .testa{padding-top:20px}.fascia{padding:36px 28px 30px}.fascia h3{font-size:56px}.card{padding:24px}.card.foto .corpo{padding:24px}}
+@media(min-width:720px){h1{font-size:72px}.wrap{padding:0 24px 80px}.tabs{flex-wrap:nowrap}.tabs a{font-size:17px}.luoghi{grid-template-columns:1fr 1fr}.due{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}.tiles{grid-template-columns:repeat(4,1fr)}.card.foto.hotel{display:grid;grid-template-columns:320px 1fr}.hotel img{aspect-ratio:4/3;height:100%}.giorno{display:grid;grid-template-columns:260px 1fr;align-items:stretch}.giorno img{aspect-ratio:auto;height:100%;min-height:220px}.giorno .testa{padding-top:20px}.fascia{padding:36px 28px 30px}.fascia h3{font-size:56px}.card{padding:24px}.card.foto .corpo{padding:24px}}
 @media(prefers-reduced-motion:no-preference){.tabs a{transition:color .2s}}
 </style>
 </head>
@@ -138,10 +138,10 @@ footer{margin-top:48px;padding-top:16px;border-top:2px solid var(--riga);font-si
   <h1>Giappone</h1>
   <p class="sotto">Dal 28 dicembre 2026 al 9 gennaio 2027, in quattro. Dieci notti a terra, una in volo.</p>
   <div class="mappa">
-    <div class="fermata f-tokyo"><span class="anello">T</span><b>Tokyo</b><span>29 dic &ndash; 1 gen</span></div>
-    <div class="fermata f-kyoto"><span class="anello">K</span><b>Kyoto</b><span>2 &ndash; 5 gen</span></div>
-    <div class="fermata f-koya"><span class="anello">M</span><b>Monte Koya</b><span>6 gen</span></div>
-    <div class="fermata f-osaka"><span class="anello">O</span><b>Osaka</b><span>7 &ndash; 8 gen</span></div>
+    <div class="fermata f-tokyo"><span class="anello">T</span><b>Tokyo</b><span class="date">29 dic &ndash; 1 gen</span></div>
+    <div class="fermata f-kyoto"><span class="anello">K</span><b>Kyoto</b><span class="date">2 &ndash; 5 gen</span></div>
+    <div class="fermata f-koya"><span class="anello">M</span><b>Monte Koya</b><span class="date">6 gen</span></div>
+    <div class="fermata f-osaka"><span class="anello">O</span><b>Osaka</b><span class="date">7 &ndash; 8 gen</span></div>
   </div>
 </header>
 
@@ -231,7 +231,7 @@ footer{margin-top:48px;padding-top:16px;border-top:2px solid var(--riga);font-si
   <h2>Giorno per giorno<small>orari indicativi; i treni giapponesi di fine anno escono a novembre</small></h2>
 
   <article class="giorno g-viaggio">
-    <div class="testa"><span class="anello">28</span><div><b>luned&igrave; 28 dicembre</b><span>Napoli, Roma, in volo</span></div></div>
+    <div class="testa"><span class="anello">28</span><div><b>luned&igrave; 28 dicembre</b><small>Napoli, Roma, in volo</small></div></div>
     <div class="momenti">
       <div class="momento"><time>10:25</time><div><b>FR 9630</b> da Napoli Centrale, Termini alle 11:35, poi Leonardo Express</div></div>
       <div class="momento"><time>15:05</time><div><b>AZ792</b> da Fiumicino T1, notte a bordo</div></div>
@@ -241,7 +241,7 @@ footer{margin-top:48px;padding-top:16px;border-top:2px solid var(--riga);font-si
   <article class="giorno g-tokyo">
     <img src="foto/sensoji.jpg" alt="" loading="lazy">
     <div>
-    <div class="testa"><span class="anello">29</span><div><b>marted&igrave; 29 dicembre</b><span>Tokyo, Asakusa</span></div></div>
+    <div class="testa"><span class="anello">29</span><div><b>marted&igrave; 29 dicembre</b><small>Tokyo, Asakusa</small></div></div>
     <div class="momenti">
       <div class="momento"><time>11:20</time><div>Atterraggio a <b>Haneda T3</b>, QR di Visit Japan Web alla mano</div></div>
       <div class="momento"><time>12:30</time><div>Keikyu e Asakusa fino a Ningyocho, poi Hibiya fino a Iriya: 56 minuti</div></div>
@@ -255,7 +255,7 @@ footer{margin-top:48px;padding-top:16px;border-top:2px solid var(--riga);font-si
   <article class="giorno g-tokyo">
     <img src="foto/tsukiji.jpg" alt="" loading="lazy">
     <div>
-    <div class="testa"><span class="anello">30</span><div><b>mercoled&igrave; 30 dicembre</b><span>Tokyo, Tsukiji e Shinjuku</span></div></div>
+    <div class="testa"><span class="anello">30</span><div><b>mercoled&igrave; 30 dicembre</b><small>Tokyo, Tsukiji e Shinjuku</small></div></div>
     <div class="momenti">
       <div class="momento"><time>07:30</time><div><b>Mercato di Tsukiji</b>, colazione di pesce</div></div>
       <div class="momento"><time>11:00</time><div><b>Da decidere</b>: il Gundam di Odaiba non c'&egrave; pi&ugrave;. Proposta: Harajuku e Cat Street</div></div>
@@ -268,7 +268,7 @@ footer{margin-top:48px;padding-top:16px;border-top:2px solid var(--riga);font-si
   <article class="giorno g-tokyo">
     <img src="foto/akihabara.jpg" alt="" loading="lazy">
     <div>
-    <div class="testa"><span class="anello">31</span><div><b>gioved&igrave; 31 dicembre</b><span>Tokyo, l'ultimo dell'anno</span></div></div>
+    <div class="testa"><span class="anello">31</span><div><b>gioved&igrave; 31 dicembre</b><small>Tokyo, l'ultimo dell'anno</small></div></div>
     <div class="momenti">
       <div class="momento"><time>10:00</time><div><b>Ameyoko</b>, il giorno pi&ugrave; pieno dell'anno</div></div>
       <div class="momento"><time>13:30</time><div><b>Akihabara</b></div></div>
@@ -281,7 +281,7 @@ footer{margin-top:48px;padding-top:16px;border-top:2px solid var(--riga);font-si
   <article class="giorno g-tokyo">
     <img src="foto/fuji.jpg" alt="" loading="lazy">
     <div>
-    <div class="testa"><span class="anello">1</span><div><b>venerd&igrave; 1 gennaio</b><span>Monte Fuji</span></div></div>
+    <div class="testa"><span class="anello">1</span><div><b>venerd&igrave; 1 gennaio</b><small>Monte Fuji</small></div></div>
     <div class="momenti">
       <div class="momento"><time>08:30</time><div><b>Fuji Excursion 7</b> da Shinjuku, biglietti gi&agrave; ritirati in stazione JR</div></div>
       <div class="momento"><time>10:13</time><div>Shimoyoshida: <b>pagoda Chureito</b>, 398 gradini</div></div>
@@ -296,7 +296,7 @@ footer{margin-top:48px;padding-top:16px;border-top:2px solid var(--riga);font-si
   <article class="giorno g-kyoto">
     <img src="foto/gion.jpg" alt="" loading="lazy">
     <div>
-    <div class="testa"><span class="anello">2</span><div><b>sabato 2 gennaio</b><span>Tokyo, Kyoto</span></div></div>
+    <div class="testa"><span class="anello">2</span><div><b>sabato 2 gennaio</b><small>Tokyo, Kyoto</small></div></div>
     <div class="momenti">
       <div class="momento"><time>06:00</time><div><b>Nozomi 1 da Tokyo</b>, posti con spazio valigie. Check-out concordato la sera prima, oppure un Nozomi verso le 7:30</div></div>
       <div class="momento"><time>08:08</time><div><b>Kyoto</b>: valigie in deposito in stazione, poi giornata piena</div></div>
@@ -309,7 +309,7 @@ footer{margin-top:48px;padding-top:16px;border-top:2px solid var(--riga);font-si
   <article class="giorno g-kyoto">
     <img src="foto/fushimi.jpg" alt="" loading="lazy">
     <div>
-    <div class="testa"><span class="anello">3</span><div><b>domenica 3 gennaio</b><span>Kyoto, Fushimi e Higashiyama</span></div></div>
+    <div class="testa"><span class="anello">3</span><div><b>domenica 3 gennaio</b><small>Kyoto, Fushimi e Higashiyama</small></div></div>
     <div class="momenti">
       <div class="momento"><time>07:30</time><div><b>Fushimi Inari</b>, prima delle nove</div></div>
       <div class="momento"><time>11:45</time><div><b>Ginkaku-ji</b>, chiude alle 16:30</div></div>
@@ -321,7 +321,7 @@ footer{margin-top:48px;padding-top:16px;border-top:2px solid var(--riga);font-si
   <article class="giorno g-kyoto">
     <img src="foto/arashiyama.jpg" alt="" loading="lazy">
     <div>
-    <div class="testa"><span class="anello">4</span><div><b>luned&igrave; 4 gennaio</b><span>Kyoto, Arashiyama</span></div></div>
+    <div class="testa"><span class="anello">4</span><div><b>luned&igrave; 4 gennaio</b><small>Kyoto, Arashiyama</small></div></div>
     <div class="momenti">
       <div class="momento"><time>07:40</time><div><b>Bambuseto</b>, l'unica ora in cui &egrave; vuoto</div></div>
       <div class="momento"><time>08:40</time><div><b>Tenryu-ji</b> (la Sala del Drago il luned&igrave; &egrave; chiusa)</div></div>
@@ -334,7 +334,7 @@ footer{margin-top:48px;padding-top:16px;border-top:2px solid var(--riga);font-si
   <article class="giorno g-kyoto">
     <img src="foto/nara.jpg" alt="" loading="lazy">
     <div>
-    <div class="testa"><span class="anello">5</span><div><b>marted&igrave; 5 gennaio</b><span>Nara</span></div></div>
+    <div class="testa"><span class="anello">5</span><div><b>marted&igrave; 5 gennaio</b><small>Nara</small></div></div>
     <div class="momenti">
       <div class="momento"><time>08:00</time><div><b>Valigie grandi</b> al banco Yamato di Kyoto Station, consegna all'hotel di Osaka il 7</div></div>
       <div class="momento"><time>09:10</time><div><b>Todai-ji</b>, i cervi, Kasuga Taisha dall'esterno</div></div>
@@ -348,7 +348,7 @@ footer{margin-top:48px;padding-top:16px;border-top:2px solid var(--riga);font-si
   <article class="giorno g-koya">
     <img src="foto/okunoin.jpg" alt="" loading="lazy">
     <div>
-    <div class="testa"><span class="anello">6</span><div><b>mercoled&igrave; 6 gennaio</b><span>Monte Koya</span></div></div>
+    <div class="testa"><span class="anello">6</span><div><b>mercoled&igrave; 6 gennaio</b><small>Monte Koya</small></div></div>
     <div class="momenti">
       <div class="momento"><time>06:18</time><div>JR da Kyoto, Namba 7:17, <b>Rinkan delle 7:35</b>, funicolare 9:09</div></div>
       <div class="momento"><time>09:35</time><div><b>Danjo Garan e Kongobu-ji</b></div></div>
@@ -362,7 +362,7 @@ footer{margin-top:48px;padding-top:16px;border-top:2px solid var(--riga);font-si
   <article class="giorno g-osaka">
     <img src="foto/dotonbori.jpg" alt="" loading="lazy">
     <div>
-    <div class="testa"><span class="anello">7</span><div><b>gioved&igrave; 7 gennaio</b><span>Koyasan, Osaka</span></div></div>
+    <div class="testa"><span class="anello">7</span><div><b>gioved&igrave; 7 gennaio</b><small>Koyasan, Osaka</small></div></div>
     <div class="momenti">
       <div class="momento"><time>06:00</time><div><b>Cerimonia coi monaci</b>, colazione alle 7:30</div></div>
       <div class="momento"><time>08:35</time><div>Funicolare e discesa, Namba alle 10:29</div></div>
@@ -377,7 +377,7 @@ footer{margin-top:48px;padding-top:16px;border-top:2px solid var(--riga);font-si
   <article class="giorno g-osaka">
     <img src="foto/himeji.jpg" alt="" loading="lazy">
     <div>
-    <div class="testa"><span class="anello">8</span><div><b>venerd&igrave; 8 gennaio</b><span>Himeji, Osaka, rientro</span></div></div>
+    <div class="testa"><span class="anello">8</span><div><b>venerd&igrave; 8 gennaio</b><small>Himeji, Osaka, rientro</small></div></div>
     <div class="momenti">
       <div class="momento"><time>08:15</time><div><b>Himeji</b> in Shinkansen, il castello apre alle 9</div></div>
       <div class="momento"><time>13:15</time><div><b>Shinsekai</b>; Tsutenkaku con orario prenotato</div></div>
@@ -389,7 +389,7 @@ footer{margin-top:48px;padding-top:16px;border-top:2px solid var(--riga);font-si
   </article>
 
   <article class="giorno g-viaggio">
-    <div class="testa"><span class="anello">9</span><div><b>sabato 9 gennaio</b><span>In volo, Roma, Napoli</span></div></div>
+    <div class="testa"><span class="anello">9</span><div><b>sabato 9 gennaio</b><small>In volo, Roma, Napoli</small></div></div>
     <div class="momenti">
       <div class="momento"><time>06:55</time><div>Dubai, due ore di scalo</div></div>
       <div class="momento"><time>12:40</time><div><b>Fiumicino</b></div></div>
