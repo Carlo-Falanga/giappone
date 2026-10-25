@@ -129,6 +129,7 @@ tr.giu td{color:var(--testo2)}
 .todo li:first-child{border-top:0;padding-top:0}
 .todo li time{font:600 15px/1.5 var(--mono);color:var(--ink)}
 .todo li b{color:var(--ink);font-weight:700}
+.nodi li b{display:block;font-size:16px}
 footer{margin-top:48px;padding-top:16px;border-top:2px solid var(--riga);font-size:14px;line-height:1.5;color:var(--testo2)}
 @media(min-width:720px){h1{font-size:72px}.wrap{padding:0 24px 80px}.tabs{flex-wrap:nowrap}.tabs a{font-size:17px}.luoghi{grid-template-columns:1fr 1fr}.due{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}.tiles{grid-template-columns:repeat(4,1fr)}.card.foto.hotel{display:grid;grid-template-columns:320px 1fr}.hotel img{aspect-ratio:4/3;height:100%}.giorno{display:grid;grid-template-columns:260px 1fr;align-items:stretch}.giorno img{aspect-ratio:auto;height:100%;min-height:220px}.giorno .testa{padding-top:20px}.fascia{padding:36px 28px 30px}.fascia h3{font-size:56px}.card{padding:24px}.card.foto .corpo{padding:24px}}
 @media(prefers-reduced-motion:no-preference){.tabs a{transition:color .2s}}
@@ -150,6 +151,7 @@ footer{margin-top:48px;padding-top:16px;border-top:2px solid var(--riga);font-si
 
 <nav class="tabs" aria-label="Sezioni">
   <a href="#riepilogo" class="on" aria-current="page">Riepilogo</a>
+  <a href="#problemi">Problemi</a>
   <a href="#giorni">Giorni</a>
   <a href="#tappe">Tappe</a>
   <a href="#trasporti">Trasporti</a>
@@ -224,7 +226,28 @@ footer{margin-top:48px;padding-top:16px;border-top:2px solid var(--riga);font-si
       <li><b>Contanti</b>Kamo to Negi e molti templi prendono solo contanti. I bancomat dei 7-Eleven funzionano anche a Capodanno.</li>
       <li><b>Farmaci</b>Niente decongestionanti con pseudoefedrina sopra il 10%; con codeina sopra l'1% serve un permesso.</li>
       <li><b>Tax free dal 1 novembre</b>In negozio si paga tutto, l'IVA si recupera a Haneda dopo la dogana. Minimo 5.000&nbsp;&yen; per negozio e per giorno.</li>
-      <li><b>Notte del 31</b>La metro di Tokyo l'anno scorso non ha fatto notturno, la JR s&igrave;: dallo Zojo-ji si torna in Yamanote da Hamamatsucho a Uguisudani.</li>
+      <li><b>Notte del 31</b>La Yamanote corre tutta la notte, dall'1 alle 4:50 circa; la metro non ha annunciato niente: dallo Zojo-ji si torna in Yamanote da Hamamatsucho a Uguisudani.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ PROBLEMI ============ -->
+<section id="problemi">
+  <h2>Problemi di logistica<small>in ordine di giorno, ognuno con la sua soluzione</small></h2>
+  <div class="card">
+    <ul class="todo nodi">
+      <li><time>28 dic</time><div><b>Due prenotazioni di volo</b>Carlo e Maurizio sono su una, Francesco e Davis su un'altra. Va confermato che siano gli stessi voli.</div></li>
+      <li id="p-31"><time>31 dic</time><div><b>Rientro da Zojo-ji</b>La metro non ha annunciato treni notturni, e l'anno scorso non li ha fatti. La Yamanote s&igrave;, dall'1 alle 4:50 circa: da Hamamatsucho a Uguisudani, poi 10 minuti a piedi. La mattina dopo il treno per il Fuji parte da Shinjuku alle 8:30.</div></li>
+      <li><time>1 gen</time><div><b>Biglietti del Fuji</b>Quelli di Ekinet non si ritirano nelle stazioni Fujikyu. Andata e ritorno si ritirano prima, in una stazione JR East come Ueno o Shinjuku.</div></li>
+      <li><time>2 gen</time><div><b>Uscita dall'Edo Sakura</b>La reception apre alle 7, il Nozomi 1 parte da Tokyo alle 6:00. O check-out concordato la sera dell'1, o un Nozomi verso le 7:30.</div></li>
+      <li><time>2 gen</time><div><b>Valigie a Kyoto fino alle 16</b>L'Oyado non ha personale n&eacute; deposito: si entra dalle 16 alle 22, con l'orario comunicato prima. Dalle 8 alle 16 le valigie stanno nel deposito della stazione di Kyoto.</div></li>
+      <li><time>2 e 8 gen</time><div><b>Valigie sullo Shinkansen</b>Sopra i 160 cm di somma dei lati serve il posto con spazio bagagli, scelto su SmartEX quando si prenota. Fino al 5 gennaio i Nozomi sono solo a posti riservati.</div></li>
+      <li><time>5 gen</time><div><b>La valigia per Osaka</b>Il takkyubin non parte dall'Oyado: si porta al banco Yamato della stazione di Kyoto alle 8, consegna fissata al 7. L'APA va avvisato che la riceve.</div></li>
+      <li><time>5 gen</time><div><b>Muromachi Kaji</b>Prenota solo chi parla giapponese. Serve qualcuno che telefoni, oppure un altro locale.</div></li>
+      <li><time>6 gen</time><div><b>Orari del Soujiin</b>Check-in entro le 17 o la cena salta. Il cancello chiude alle 22 (una recensione dice 21): l'Okunoin di notte va fatto prima. Sul monte minime di -4&nbsp;&deg;C.</div></li>
+      <li><time>6 gen</time><div><b>Funicolare del Koyasan</b>L'avviso sui lavori invernali esce a met&agrave; novembre; l'anno scorso furono dal 22 al 24 dicembre, con bus sostitutivi.</div></li>
+      <li><time>8 gen</time><div><b>Tax free a Haneda</b>Dal 1 novembre l'IVA si recupera in aeroporto dopo la dogana, e chiede minuti in pi&ugrave;. Col Nozomi delle 18:06 ci sono 3h 20 di margine.</div></li>
+      <li><time>9 gen</time><div><b>Bagaglio del ritorno</b>Emirates: a mano 7 kg e nessun oggetto personale, mentre all'andata ITA lo permette. Gli acquisti vanno in stiva, 30 kg.</div></li>
     </ul>
   </div>
 </section>
@@ -601,7 +624,7 @@ footer{margin-top:48px;padding-top:16px;border-top:2px solid var(--riga);font-si
       <li><time>novembre</time><div><a href="https://www.bifteck.co.jp/en/restaurant/kitashinchi/" target="_blank" rel="noopener">Kawamura</a>, <a href="https://www.tablecheck.com/shops/muromach-kaji/reserve" target="_blank" rel="noopener">Kaji</a> o il suo sostituto, <a href="https://www.vjw.digital.go.jp/" target="_blank" rel="noopener">Visit Japan Web</a> per tutti, assicurazione, eSIM, passaporti controllati.</div></li>
       <li><time>24 nov</time><div><a href="https://www.eki-net.com/en/jreast-train-reservation/Top/Index" target="_blank" rel="noopener">Ekinet alle 6:00</a>: prenotazione anticipata del Fuji Excursion 7 e del ritorno delle 16:48. Se non d&agrave; posti, vendita il 1 dicembre alle 2:00.</div></li>
       <li><time>2-3 dic</time><div><a href="https://www.shibuya-scramble-square.com/sky/ticket/" target="_blank" rel="noopener">Shibuya Sky</a>, slot delle 16:20 del 31: in vendita quattro settimane prima, il tramonto finisce per primo.</div></li>
-      <li><time>dicembre</time><div>Calendari di fine anno dei locali e di Tsukiji, avviso Nankai sulla funicolare, treni della notte del 31, funivia del lago.</div></li>
+      <li><time>dicembre</time><div>Calendari di fine anno dei locali e di Tsukiji, avviso Nankai sulla funicolare, funivia del lago.</div></li>
       <li><time>26 dic</time><div><a href="https://tabelog.com/en/tokyo/A1301/A130101/13293124/" target="_blank" rel="noopener">Kiwami</a>: ultimo giorno per disdire senza penale.</div></li>
     </ul>
   </div>
@@ -620,7 +643,7 @@ footer{margin-top:48px;padding-top:16px;border-top:2px solid var(--riga);font-si
 
 </main>
 
-<footer>Aggiornata il 15 ottobre 2026. Prezzi e orari verificati sulle fonti ufficiali il 15 ottobre 2026, cambio BCE del giorno 177,06&nbsp;&yen; per euro. Foto da Wikimedia Commons e Wikipedia, licenze libere, e dalle schede delle strutture.</footer>
+<footer>Aggiornata il 25 ottobre 2026. Prezzi e orari verificati sulle fonti ufficiali il 15 ottobre 2026, cambio BCE del giorno 177,06&nbsp;&yen; per euro. Foto da Wikimedia Commons e Wikipedia, licenze libere, e dalle schede delle strutture.</footer>
 
 </div>
 <script src="app.js"></script>
